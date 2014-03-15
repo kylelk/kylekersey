@@ -1,0 +1,2824 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>androidhelper.html</title>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<style>
+    .source .hll { background-color: #ffffcc }
+.source  { background: #f8f8f8; }
+.source .c { color: #408080; font-style: italic } /* Comment */
+.source .err { border: 1px solid #FF0000 } /* Error */
+.source .k { color: #008000; font-weight: bold } /* Keyword */
+.source .o { color: #666666 } /* Operator */
+.source .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.source .cp { color: #BC7A00 } /* Comment.Preproc */
+.source .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.source .cs { color: #408080; font-style: italic } /* Comment.Special */
+.source .gd { color: #A00000 } /* Generic.Deleted */
+.source .ge { font-style: italic } /* Generic.Emph */
+.source .gr { color: #FF0000 } /* Generic.Error */
+.source .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.source .gi { color: #00A000 } /* Generic.Inserted */
+.source .go { color: #888888 } /* Generic.Output */
+.source .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.source .gs { font-weight: bold } /* Generic.Strong */
+.source .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.source .gt { color: #0044DD } /* Generic.Traceback */
+.source .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.source .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.source .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.source .kp { color: #008000 } /* Keyword.Pseudo */
+.source .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.source .kt { color: #B00040 } /* Keyword.Type */
+.source .m { color: #666666 } /* Literal.Number */
+.source .s { color: #BA2121 } /* Literal.String */
+.source .na { color: #7D9029 } /* Name.Attribute */
+.source .nb { color: #008000 } /* Name.Builtin */
+.source .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.source .no { color: #880000 } /* Name.Constant */
+.source .nd { color: #AA22FF } /* Name.Decorator */
+.source .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.source .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.source .nf { color: #0000FF } /* Name.Function */
+.source .nl { color: #A0A000 } /* Name.Label */
+.source .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.source .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.source .nv { color: #19177C } /* Name.Variable */
+.source .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.source .w { color: #bbbbbb } /* Text.Whitespace */
+.source .mf { color: #666666 } /* Literal.Number.Float */
+.source .mh { color: #666666 } /* Literal.Number.Hex */
+.source .mi { color: #666666 } /* Literal.Number.Integer */
+.source .mo { color: #666666 } /* Literal.Number.Oct */
+.source .sb { color: #BA2121 } /* Literal.String.Backtick */
+.source .sc { color: #BA2121 } /* Literal.String.Char */
+.source .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.source .s2 { color: #BA2121 } /* Literal.String.Double */
+.source .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.source .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.source .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.source .sx { color: #008000 } /* Literal.String.Other */
+.source .sr { color: #BB6688 } /* Literal.String.Regex */
+.source .s1 { color: #BA2121 } /* Literal.String.Single */
+.source .ss { color: #19177C } /* Literal.String.Symbol */
+.source .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.source .vc { color: #19177C } /* Name.Variable.Class */
+.source .vg { color: #19177C } /* Name.Variable.Global */
+.source .vi { color: #19177C } /* Name.Variable.Instance */
+.source .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48664735-1', 'kylelk.github.io');
+    ga('send', 'pageview');
+
+    </script>
+	</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="http://kylelk.github.io/kylekersey">Kyle Kersey</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li><a href="http://kylelk.github.io/kylekersey/code/index.html">Code</a></li>
+         <li><a href="about/">About</a></li>
+          <li><a href="contact/">Contact</a></li>
+          <li><a href="work/">Work</a></li>
+          <li><a href="http://kylelk.github.io/kylekersey/sitemap.html">Site Map</a></li>
+      </ul>
+   </div>
+</nav>
+<div class="main-area">
+    <b><a id="raw_link" href="raw/androidhelper.html">View Raw</a></b>
+    <br>    
+    <table class="sourcetable"><tr><td class="linenos"><div class="linenodiv"><pre>   1
+   2
+   3
+   4
+   5
+   6
+   7
+   8
+   9
+  10
+  11
+  12
+  13
+  14
+  15
+  16
+  17
+  18
+  19
+  20
+  21
+  22
+  23
+  24
+  25
+  26
+  27
+  28
+  29
+  30
+  31
+  32
+  33
+  34
+  35
+  36
+  37
+  38
+  39
+  40
+  41
+  42
+  43
+  44
+  45
+  46
+  47
+  48
+  49
+  50
+  51
+  52
+  53
+  54
+  55
+  56
+  57
+  58
+  59
+  60
+  61
+  62
+  63
+  64
+  65
+  66
+  67
+  68
+  69
+  70
+  71
+  72
+  73
+  74
+  75
+  76
+  77
+  78
+  79
+  80
+  81
+  82
+  83
+  84
+  85
+  86
+  87
+  88
+  89
+  90
+  91
+  92
+  93
+  94
+  95
+  96
+  97
+  98
+  99
+ 100
+ 101
+ 102
+ 103
+ 104
+ 105
+ 106
+ 107
+ 108
+ 109
+ 110
+ 111
+ 112
+ 113
+ 114
+ 115
+ 116
+ 117
+ 118
+ 119
+ 120
+ 121
+ 122
+ 123
+ 124
+ 125
+ 126
+ 127
+ 128
+ 129
+ 130
+ 131
+ 132
+ 133
+ 134
+ 135
+ 136
+ 137
+ 138
+ 139
+ 140
+ 141
+ 142
+ 143
+ 144
+ 145
+ 146
+ 147
+ 148
+ 149
+ 150
+ 151
+ 152
+ 153
+ 154
+ 155
+ 156
+ 157
+ 158
+ 159
+ 160
+ 161
+ 162
+ 163
+ 164
+ 165
+ 166
+ 167
+ 168
+ 169
+ 170
+ 171
+ 172
+ 173
+ 174
+ 175
+ 176
+ 177
+ 178
+ 179
+ 180
+ 181
+ 182
+ 183
+ 184
+ 185
+ 186
+ 187
+ 188
+ 189
+ 190
+ 191
+ 192
+ 193
+ 194
+ 195
+ 196
+ 197
+ 198
+ 199
+ 200
+ 201
+ 202
+ 203
+ 204
+ 205
+ 206
+ 207
+ 208
+ 209
+ 210
+ 211
+ 212
+ 213
+ 214
+ 215
+ 216
+ 217
+ 218
+ 219
+ 220
+ 221
+ 222
+ 223
+ 224
+ 225
+ 226
+ 227
+ 228
+ 229
+ 230
+ 231
+ 232
+ 233
+ 234
+ 235
+ 236
+ 237
+ 238
+ 239
+ 240
+ 241
+ 242
+ 243
+ 244
+ 245
+ 246
+ 247
+ 248
+ 249
+ 250
+ 251
+ 252
+ 253
+ 254
+ 255
+ 256
+ 257
+ 258
+ 259
+ 260
+ 261
+ 262
+ 263
+ 264
+ 265
+ 266
+ 267
+ 268
+ 269
+ 270
+ 271
+ 272
+ 273
+ 274
+ 275
+ 276
+ 277
+ 278
+ 279
+ 280
+ 281
+ 282
+ 283
+ 284
+ 285
+ 286
+ 287
+ 288
+ 289
+ 290
+ 291
+ 292
+ 293
+ 294
+ 295
+ 296
+ 297
+ 298
+ 299
+ 300
+ 301
+ 302
+ 303
+ 304
+ 305
+ 306
+ 307
+ 308
+ 309
+ 310
+ 311
+ 312
+ 313
+ 314
+ 315
+ 316
+ 317
+ 318
+ 319
+ 320
+ 321
+ 322
+ 323
+ 324
+ 325
+ 326
+ 327
+ 328
+ 329
+ 330
+ 331
+ 332
+ 333
+ 334
+ 335
+ 336
+ 337
+ 338
+ 339
+ 340
+ 341
+ 342
+ 343
+ 344
+ 345
+ 346
+ 347
+ 348
+ 349
+ 350
+ 351
+ 352
+ 353
+ 354
+ 355
+ 356
+ 357
+ 358
+ 359
+ 360
+ 361
+ 362
+ 363
+ 364
+ 365
+ 366
+ 367
+ 368
+ 369
+ 370
+ 371
+ 372
+ 373
+ 374
+ 375
+ 376
+ 377
+ 378
+ 379
+ 380
+ 381
+ 382
+ 383
+ 384
+ 385
+ 386
+ 387
+ 388
+ 389
+ 390
+ 391
+ 392
+ 393
+ 394
+ 395
+ 396
+ 397
+ 398
+ 399
+ 400
+ 401
+ 402
+ 403
+ 404
+ 405
+ 406
+ 407
+ 408
+ 409
+ 410
+ 411
+ 412
+ 413
+ 414
+ 415
+ 416
+ 417
+ 418
+ 419
+ 420
+ 421
+ 422
+ 423
+ 424
+ 425
+ 426
+ 427
+ 428
+ 429
+ 430
+ 431
+ 432
+ 433
+ 434
+ 435
+ 436
+ 437
+ 438
+ 439
+ 440
+ 441
+ 442
+ 443
+ 444
+ 445
+ 446
+ 447
+ 448
+ 449
+ 450
+ 451
+ 452
+ 453
+ 454
+ 455
+ 456
+ 457
+ 458
+ 459
+ 460
+ 461
+ 462
+ 463
+ 464
+ 465
+ 466
+ 467
+ 468
+ 469
+ 470
+ 471
+ 472
+ 473
+ 474
+ 475
+ 476
+ 477
+ 478
+ 479
+ 480
+ 481
+ 482
+ 483
+ 484
+ 485
+ 486
+ 487
+ 488
+ 489
+ 490
+ 491
+ 492
+ 493
+ 494
+ 495
+ 496
+ 497
+ 498
+ 499
+ 500
+ 501
+ 502
+ 503
+ 504
+ 505
+ 506
+ 507
+ 508
+ 509
+ 510
+ 511
+ 512
+ 513
+ 514
+ 515
+ 516
+ 517
+ 518
+ 519
+ 520
+ 521
+ 522
+ 523
+ 524
+ 525
+ 526
+ 527
+ 528
+ 529
+ 530
+ 531
+ 532
+ 533
+ 534
+ 535
+ 536
+ 537
+ 538
+ 539
+ 540
+ 541
+ 542
+ 543
+ 544
+ 545
+ 546
+ 547
+ 548
+ 549
+ 550
+ 551
+ 552
+ 553
+ 554
+ 555
+ 556
+ 557
+ 558
+ 559
+ 560
+ 561
+ 562
+ 563
+ 564
+ 565
+ 566
+ 567
+ 568
+ 569
+ 570
+ 571
+ 572
+ 573
+ 574
+ 575
+ 576
+ 577
+ 578
+ 579
+ 580
+ 581
+ 582
+ 583
+ 584
+ 585
+ 586
+ 587
+ 588
+ 589
+ 590
+ 591
+ 592
+ 593
+ 594
+ 595
+ 596
+ 597
+ 598
+ 599
+ 600
+ 601
+ 602
+ 603
+ 604
+ 605
+ 606
+ 607
+ 608
+ 609
+ 610
+ 611
+ 612
+ 613
+ 614
+ 615
+ 616
+ 617
+ 618
+ 619
+ 620
+ 621
+ 622
+ 623
+ 624
+ 625
+ 626
+ 627
+ 628
+ 629
+ 630
+ 631
+ 632
+ 633
+ 634
+ 635
+ 636
+ 637
+ 638
+ 639
+ 640
+ 641
+ 642
+ 643
+ 644
+ 645
+ 646
+ 647
+ 648
+ 649
+ 650
+ 651
+ 652
+ 653
+ 654
+ 655
+ 656
+ 657
+ 658
+ 659
+ 660
+ 661
+ 662
+ 663
+ 664
+ 665
+ 666
+ 667
+ 668
+ 669
+ 670
+ 671
+ 672
+ 673
+ 674
+ 675
+ 676
+ 677
+ 678
+ 679
+ 680
+ 681
+ 682
+ 683
+ 684
+ 685
+ 686
+ 687
+ 688
+ 689
+ 690
+ 691
+ 692
+ 693
+ 694
+ 695
+ 696
+ 697
+ 698
+ 699
+ 700
+ 701
+ 702
+ 703
+ 704
+ 705
+ 706
+ 707
+ 708
+ 709
+ 710
+ 711
+ 712
+ 713
+ 714
+ 715
+ 716
+ 717
+ 718
+ 719
+ 720
+ 721
+ 722
+ 723
+ 724
+ 725
+ 726
+ 727
+ 728
+ 729
+ 730
+ 731
+ 732
+ 733
+ 734
+ 735
+ 736
+ 737
+ 738
+ 739
+ 740
+ 741
+ 742
+ 743
+ 744
+ 745
+ 746
+ 747
+ 748
+ 749
+ 750
+ 751
+ 752
+ 753
+ 754
+ 755
+ 756
+ 757
+ 758
+ 759
+ 760
+ 761
+ 762
+ 763
+ 764
+ 765
+ 766
+ 767
+ 768
+ 769
+ 770
+ 771
+ 772
+ 773
+ 774
+ 775
+ 776
+ 777
+ 778
+ 779
+ 780
+ 781
+ 782
+ 783
+ 784
+ 785
+ 786
+ 787
+ 788
+ 789
+ 790
+ 791
+ 792
+ 793
+ 794
+ 795
+ 796
+ 797
+ 798
+ 799
+ 800
+ 801
+ 802
+ 803
+ 804
+ 805
+ 806
+ 807
+ 808
+ 809
+ 810
+ 811
+ 812
+ 813
+ 814
+ 815
+ 816
+ 817
+ 818
+ 819
+ 820
+ 821
+ 822
+ 823
+ 824
+ 825
+ 826
+ 827
+ 828
+ 829
+ 830
+ 831
+ 832
+ 833
+ 834
+ 835
+ 836
+ 837
+ 838
+ 839
+ 840
+ 841
+ 842
+ 843
+ 844
+ 845
+ 846
+ 847
+ 848
+ 849
+ 850
+ 851
+ 852
+ 853
+ 854
+ 855
+ 856
+ 857
+ 858
+ 859
+ 860
+ 861
+ 862
+ 863
+ 864
+ 865
+ 866
+ 867
+ 868
+ 869
+ 870
+ 871
+ 872
+ 873
+ 874
+ 875
+ 876
+ 877
+ 878
+ 879
+ 880
+ 881
+ 882
+ 883
+ 884
+ 885
+ 886
+ 887
+ 888
+ 889
+ 890
+ 891
+ 892
+ 893
+ 894
+ 895
+ 896
+ 897
+ 898
+ 899
+ 900
+ 901
+ 902
+ 903
+ 904
+ 905
+ 906
+ 907
+ 908
+ 909
+ 910
+ 911
+ 912
+ 913
+ 914
+ 915
+ 916
+ 917
+ 918
+ 919
+ 920
+ 921
+ 922
+ 923
+ 924
+ 925
+ 926
+ 927
+ 928
+ 929
+ 930
+ 931
+ 932
+ 933
+ 934
+ 935
+ 936
+ 937
+ 938
+ 939
+ 940
+ 941
+ 942
+ 943
+ 944
+ 945
+ 946
+ 947
+ 948
+ 949
+ 950
+ 951
+ 952
+ 953
+ 954
+ 955
+ 956
+ 957
+ 958
+ 959
+ 960
+ 961
+ 962
+ 963
+ 964
+ 965
+ 966
+ 967
+ 968
+ 969
+ 970
+ 971
+ 972
+ 973
+ 974
+ 975
+ 976
+ 977
+ 978
+ 979
+ 980
+ 981
+ 982
+ 983
+ 984
+ 985
+ 986
+ 987
+ 988
+ 989
+ 990
+ 991
+ 992
+ 993
+ 994
+ 995
+ 996
+ 997
+ 998
+ 999
+1000
+1001
+1002
+1003
+1004
+1005
+1006
+1007
+1008
+1009
+1010
+1011
+1012
+1013
+1014
+1015
+1016
+1017
+1018
+1019
+1020
+1021
+1022
+1023
+1024
+1025
+1026
+1027
+1028
+1029
+1030
+1031
+1032
+1033
+1034
+1035
+1036
+1037
+1038
+1039
+1040
+1041
+1042
+1043
+1044
+1045
+1046
+1047
+1048
+1049
+1050
+1051
+1052
+1053
+1054
+1055
+1056
+1057
+1058
+1059
+1060
+1061
+1062
+1063
+1064
+1065
+1066
+1067
+1068
+1069
+1070
+1071
+1072
+1073
+1074
+1075
+1076
+1077
+1078
+1079
+1080
+1081
+1082
+1083
+1084
+1085
+1086
+1087
+1088
+1089
+1090
+1091
+1092
+1093
+1094
+1095
+1096
+1097
+1098
+1099
+1100
+1101
+1102
+1103
+1104
+1105
+1106
+1107
+1108
+1109
+1110
+1111
+1112
+1113
+1114
+1115
+1116
+1117
+1118
+1119
+1120
+1121
+1122
+1123
+1124
+1125
+1126
+1127
+1128
+1129
+1130
+1131
+1132
+1133
+1134
+1135
+1136
+1137
+1138
+1139
+1140
+1141
+1142
+1143
+1144
+1145
+1146
+1147
+1148
+1149
+1150
+1151
+1152
+1153
+1154
+1155
+1156
+1157
+1158
+1159
+1160
+1161
+1162
+1163
+1164
+1165
+1166
+1167
+1168
+1169
+1170
+1171
+1172
+1173
+1174
+1175
+1176
+1177
+1178
+1179
+1180
+1181
+1182
+1183
+1184
+1185
+1186
+1187
+1188
+1189
+1190
+1191
+1192
+1193
+1194
+1195
+1196
+1197
+1198
+1199
+1200
+1201
+1202
+1203
+1204
+1205
+1206
+1207
+1208
+1209
+1210
+1211
+1212
+1213
+1214
+1215
+1216
+1217
+1218
+1219
+1220
+1221
+1222
+1223
+1224
+1225
+1226
+1227
+1228
+1229
+1230
+1231
+1232
+1233
+1234
+1235
+1236
+1237
+1238
+1239
+1240
+1241
+1242
+1243
+1244
+1245
+1246
+1247
+1248
+1249
+1250
+1251
+1252
+1253
+1254
+1255
+1256
+1257
+1258
+1259
+1260
+1261
+1262
+1263
+1264
+1265
+1266
+1267
+1268
+1269
+1270
+1271
+1272
+1273
+1274
+1275
+1276
+1277
+1278
+1279
+1280
+1281
+1282
+1283
+1284
+1285
+1286
+1287
+1288
+1289
+1290
+1291
+1292
+1293
+1294
+1295
+1296
+1297
+1298
+1299
+1300
+1301
+1302
+1303
+1304
+1305
+1306
+1307
+1308
+1309
+1310
+1311
+1312
+1313
+1314
+1315
+1316
+1317
+1318
+1319
+1320
+1321
+1322
+1323
+1324
+1325
+1326
+1327
+1328
+1329
+1330
+1331
+1332
+1333
+1334
+1335
+1336
+1337
+1338
+1339
+1340
+1341
+1342
+1343
+1344
+1345</pre></div></td><td class="code"><div class="source"><pre><span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>androidhelper documentation<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">style=</span><span class="s">&quot;text-align:center;&quot;</span><span class="nt">&gt;</span>androidhelper documentation<span class="nt">&lt;/h1&gt;</span>
+
+    <span class="nt">&lt;script&gt;</span>
+    <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">o</span><span class="p">,</span><span class="nx">g</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">a</span><span class="p">,</span><span class="nx">m</span><span class="p">){</span><span class="nx">i</span><span class="p">[</span><span class="s1">&#39;GoogleAnalyticsObject&#39;</span><span class="p">]</span><span class="o">=</span><span class="nx">r</span><span class="p">;</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="o">=</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">]</span><span class="o">||</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="p">(</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">q</span><span class="o">=</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">q</span><span class="o">||</span><span class="p">[]).</span><span class="nx">push</span><span class="p">(</span><span class="nx">arguments</span><span class="p">)},</span><span class="nx">i</span><span class="p">[</span><span class="nx">r</span><span class="p">].</span><span class="nx">l</span><span class="o">=</span><span class="mi">1</span><span class="o">*</span><span class="k">new</span> <span class="nb">Date</span><span class="p">();</span><span class="nx">a</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">o</span><span class="p">),</span>
+    <span class="nx">m</span><span class="o">=</span><span class="nx">s</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">o</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span><span class="nx">a</span><span class="p">.</span><span class="nx">async</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">a</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">g</span><span class="p">;</span><span class="nx">m</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">m</span><span class="p">)</span>
+    <span class="p">})(</span><span class="nb">window</span><span class="p">,</span><span class="nb">document</span><span class="p">,</span><span class="s1">&#39;script&#39;</span><span class="p">,</span><span class="s1">&#39;//www.google-analytics.com/analytics.js&#39;</span><span class="p">,</span><span class="s1">&#39;ga&#39;</span><span class="p">);</span>
+
+    <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;create&#39;</span><span class="p">,</span> <span class="s1">&#39;UA-48664735-1&#39;</span><span class="p">,</span> <span class="s1">&#39;kylelk.github.io&#39;</span><span class="p">);</span>
+    <span class="nx">ga</span><span class="p">(</span><span class="s1">&#39;send&#39;</span><span class="p">,</span> <span class="s1">&#39;pageview&#39;</span><span class="p">);</span>
+
+    <span class="nt">&lt;/script&gt;</span>
+	<span class="nt">&lt;/head&gt;</span>
+
+<span class="nt">&lt;style&gt;</span>
+<span class="nc">.discription</span><span class="p">{</span>
+	<span class="k">padding</span><span class="o">:</span><span class="m">20px</span><span class="p">;</span> 
+	<span class="k">font-size</span><span class="o">:</span><span class="m">14px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.method-name</span><span class="p">{</span>
+    <span class="k">font-size</span><span class="o">:</span><span class="m">18px</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="nt">&lt;/style&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+        <span class="kd">function</span> <span class="nx">doSearch</span><span class="p">()</span> <span class="p">{</span>
+    		<span class="kd">var</span> <span class="nx">searchText</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;searchTerm&#39;</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    		<span class="kd">var</span> <span class="nx">targetTable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;dataTable&#39;</span><span class="p">);</span>
+    		<span class="kd">var</span> <span class="nx">targetTableColCount</span><span class="p">;</span>
+
+    		<span class="c1">//Loop through table rows</span>
+    		<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">rowIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">rowIndex</span> <span class="o">&lt;</span> <span class="nx">targetTable</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">rowIndex</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    			<span class="kd">var</span> <span class="nx">rowData</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+    			<span class="c1">//Get column count from header row</span>
+    			<span class="k">if</span> <span class="p">(</span><span class="nx">rowIndex</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    				<span class="nx">targetTableColCount</span> <span class="o">=</span> <span class="nx">targetTable</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">rowIndex</span><span class="p">).</span><span class="nx">cells</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+    				<span class="k">continue</span><span class="p">;</span> <span class="c1">//do not execute further code for header row.</span>
+    			<span class="p">}</span>
+
+    			<span class="c1">//Process data rows. (rowIndex &gt;= 1)</span>
+    			<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">colIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">colIndex</span> <span class="o">&lt;</span> <span class="nx">targetTableColCount</span><span class="p">;</span> <span class="nx">colIndex</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    				<span class="kd">var</span> <span class="nx">cellText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+    				<span class="k">if</span> <span class="p">(</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">appName</span> <span class="o">==</span> <span class="s1">&#39;Microsoft Internet Explorer&#39;</span><span class="p">)</span>
+    					<span class="nx">cellText</span> <span class="o">=</span> <span class="nx">targetTable</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">rowIndex</span><span class="p">).</span><span class="nx">cells</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">colIndex</span><span class="p">).</span><span class="nx">innerText</span><span class="p">;</span>
+    				<span class="k">else</span>
+    					<span class="nx">cellText</span> <span class="o">=</span> <span class="nx">targetTable</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">rowIndex</span><span class="p">).</span><span class="nx">cells</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">colIndex</span><span class="p">).</span><span class="nx">textContent</span><span class="p">;</span>
+
+    				<span class="nx">rowData</span> <span class="o">+=</span> <span class="nx">cellText</span><span class="p">;</span>
+    			<span class="p">}</span>
+
+    			<span class="c1">// Make search case insensitive.</span>
+    			<span class="nx">rowData</span> <span class="o">=</span> <span class="nx">rowData</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    			<span class="nx">searchText</span> <span class="o">=</span> <span class="nx">searchText</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+
+    			<span class="c1">//If search term is not found in row data</span>
+    			<span class="c1">//then hide the row, else show</span>
+    			<span class="k">if</span> <span class="p">(</span><span class="nx">rowData</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    				<span class="nx">targetTable</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">rowIndex</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">;</span>
+    			<span class="k">else</span>
+    				<span class="nx">targetTable</span><span class="p">.</span><span class="nx">rows</span><span class="p">.</span><span class="nx">item</span><span class="p">(</span><span class="nx">rowIndex</span><span class="p">).</span><span class="nx">style</span><span class="p">.</span><span class="nx">display</span> <span class="o">=</span> <span class="s1">&#39;table-row&#39;</span><span class="p">;</span>
+    		<span class="p">}</span>
+    	<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h3&gt;</span>Purpose<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;purpose&quot;</span><span class="nt">&gt;</span>
+    To simplify Python-for-Android SL4A development in IDEs with a
+    &quot;hepler&quot; class derived from the default Android class containing
+    SL4A facade functions <span class="err">&amp;</span> API documentation
+<span class="nt">&lt;/pre&gt;</span>
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>Usage<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;usage&quot;</span><span class="nt">&gt;</span>
+    copy androidhelper.py into either the folder containing your
+    SL4A python script or to some location on the python import path
+    that your IDE can see and in your script, instead of:
+
+        import android
+
+    use the following import code:
+
+    try:
+        import androidhelper as android
+    except:
+        import android
+<span class="nt">&lt;/pre&gt;</span>
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>Version<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;pre&gt;</span>
+    for SL4A Release R5, created on 7-Apr-2012
+<span class="nt">&lt;/pre&gt;</span>
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>Authors<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;pre&gt;</span>
+    Hariharan Srinath (srinathdevelopment@gmail.com) with inputs
+    from Robbie Matthews (rjmatthews62@gmail.com)
+<span class="nt">&lt;/pre&gt;</span>
+<span class="nt">&lt;hr&gt;</span>
+
+<span class="nt">&lt;h3&gt;</span>Copyright<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;pre&gt;</span>
+    Copyright (C) 2012, Hariharan Srinath, Robbie Matthews
+    
+    Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not
+    use this file except in compliance with the License. You may obtain a copy of
+    the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT
+    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+    License for the specific language governing permissions and limitations under
+    the License.
+<span class="nt">&lt;/pre&gt;</span>
+<span class="nt">&lt;hr&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+
+Search <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">id=</span><span class="s">&quot;searchTerm&quot;</span> <span class="na">class=</span><span class="s">&quot;search_box&quot;</span> <span class="na">onkeyup=</span><span class="s">&quot;doSearch()&quot;</span> <span class="na">size=</span><span class="s">50/</span><span class="nt">&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;br&gt;</span>
+<span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">&quot;dataTable&quot;</span> <span class="na">border=</span><span class="s">&quot;1&quot;</span> <span class="na">width=</span><span class="s">&quot;100%&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;tr&gt;</span>
+<span class="nt">&lt;th&gt;</span>Method<span class="nt">&lt;/th&gt;</span>
+<span class="nt">&lt;th&gt;</span>Paramaters<span class="nt">&lt;/th&gt;</span>
+<span class="nt">&lt;/tr&gt;</span>
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>addContextMenuItem<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,label,event,eventData=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>addContextMenuItem(label,event,eventData=None)
+Adds a new item to context menu.
+        label (String) label for this menu item
+        event (String) event that will be generated on menu item click
+        eventData (Object)  (optional)
+Context menus are used primarily with webViewShow<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>addOptionsMenuItem<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,label,event,eventData=None,iconName=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>addOptionsMenuItem(label,event,eventData=None,iconName=None)
+Adds a new item to options menu.
+        label (String) label for this menu item
+        event (String) event that will be generated on menu item click
+        eventData (Object)  (optional)
+        iconName (String) Android system menu icon, see http://developer.android.com/reference/android/R.drawable.html (optional)
+Example (python)
+import android
+droid=android.Android()
+droid.addOptionsMenuItem(&quot;Silly&quot;,&quot;silly&quot;,None,&quot;star_on&quot;)
+droid.addOptionsMenuItem(&quot;Sensible&quot;,&quot;sensible&quot;,&quot;I bet.&quot;,&quot;star_off&quot;)
+droid.addOptionsMenuItem(&quot;Off&quot;,&quot;off&quot;,None,&quot;ic_menu_revert&quot;)
+print &quot;Hit menu to see extra options.&quot;
+print &quot;Will timeout in 10 seconds if you hit nothing.&quot;
+while True: # Wait for events from the menu.
+response=droid.eventWait(10000).result
+if response==None:
+break
+print response
+if response[&quot;name&quot;]==&quot;off&quot;:
+break
+print &quot;And done.&quot;<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryCheckPresent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryCheckPresent(self)
+Returns the most recently received battery presence data.
+Min SDK level=5<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryGetHealth<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryGetHealth(self)
+Returns the most recently received battery health data:1 - unknown;2 - good;3 - overheat;4 - dead;5 - over voltage;6 - unspecified failure;<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryGetLevel<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryGetLevel(self)
+Returns the most recently received battery level (percentage).
+Min SDK level=5<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryGetPlugType<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryGetPlugType(self)
+Returns the most recently received plug type data:-1 - unknown0 - unplugged;1 - power source is an AC charger2 - power source is a USB port<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryGetStatus<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryGetStatus(self)
+Returns  the most recently received battery status data:1 - unknown;2 - charging;3 - discharging;4 - not charging;5 - full;<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryGetTechnology<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryGetTechnology(self)
+Returns the most recently received battery technology data.
+Min SDK level=5<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryGetTemperature<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryGetTemperature(self)
+Returns the most recently received battery temperature.
+Min SDK level=5<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryGetVoltage<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryGetVoltage(self)
+Returns the most recently received battery voltage.
+Min SDK level=5<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryStartMonitoring<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryStartMonitoring(self)
+Starts tracking battery state.
+throws &quot;battery&quot; events<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>batteryStopMonitoring<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>batteryStopMonitoring(self)
+Stops tracking battery state.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothAccept<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uuid=&#39;457807c0-4897-11df-9879-0800200c9a66&#39;,timeout=0<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothAccept(uuid=&quot;457807c0-4897-11df-9879-0800200c9a66&quot;,timeout=0)
+Listens for and accepts a Bluetooth connection. Blocks until the connection is established or fails.
+        uuid (String)  (default=457807c0-4897-11df-9879-0800200c9a66)
+        timeout (Integer) How long to wait for a new connection, 0 is wait for ever (default=0)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothActiveConnections<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothActiveConnections(self)
+Returns true when there&#39;s an active Bluetooth connection.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothConnect<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uuid=&#39;457807c0-4897-11df-9879-0800200c9a66&#39;,address=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothConnect(uuid=&quot;457807c0-4897-11df-9879-0800200c9a66&quot;,address=None)
+Connect to a device over Bluetooth. Blocks until the connection is established or fails.
+        uuid (String) The UUID passed here must match the UUID used by the server device. (default=457807c0-4897-11df-9879-0800200c9a66)
+        address (String) The user will be presented with a list of discovered devices to choose from if an address is not provided. (optional)
+returns: (String) True if the connection was established successfully.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothGetConnectedDeviceName<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,connID=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothGetConnectedDeviceName(connID=None)
+Returns the name of the connected device.
+        connID (String) Connection id (optional) (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothGetLocalName<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothGetLocalName(self)
+Gets the Bluetooth Visible device name<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothGetRemoteDeviceName<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,address<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothGetRemoteDeviceName(address)
+Queries a remote device for it&#39;s name or null if it can&#39;t be resolved
+        address (String) Bluetooth Address For Target Device<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothGetScanMode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothGetScanMode(self)
+Gets the scan mode for the local dongle.
+Return values:
+        -1 when Bluetooth is disabled.
+        0 if non discoverable and non connectable.
+
+1 connectable non discoverable.
+3 connectable and discoverable.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothMakeDiscoverable<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,duration=300<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothMakeDiscoverable(duration=300)
+Requests that the device be discoverable for Bluetooth connections.
+        duration (Integer) period of time, in seconds, during which the device should be discoverable (default=300)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothRead<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,bufferSize=4096,connID=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothRead(bufferSize=4096,connID=None)
+Read up to bufferSize ASCII characters.
+        bufferSize (Integer)  (default=4096)
+        connID (String) Connection id (optional) (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothReadBinary<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,bufferSize=4096,connID=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothReadBinary(bufferSize=4096,connID=None)
+Read up to bufferSize bytes and return a chunked, base64 encoded string.
+        bufferSize (Integer)  (default=4096)
+        connID (String) Connection id (optional) (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothReadLine<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,connID=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothReadLine(connID=None)
+Read the next line.
+        connID (String) Connection id (optional) (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothReadReady<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,connID=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothReadReady(connID=None)
+Returns True if the next read is guaranteed not to block.
+        connID (String) Connection id (optional) (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothSetLocalName<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,name<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothSetLocalName(name)
+Sets the Bluetooth Visible device name, returns True on success
+        name (String) New local name<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothStop<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,connID=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothStop(connID=None)
+Stops Bluetooth connection.
+        connID (String) Connection id (optional) (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothWrite<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,ascii,connID=&#39;&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothWrite(ascii,connID=&quot;&quot;)
+Sends ASCII characters over the currently open Bluetooth connection.
+        ascii (String)
+        connID (String) Connection id (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>bluetoothWriteBinary<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,base64,connID=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>bluetoothWriteBinary(base64,connID=None)
+Send bytes over the currently open Bluetooth connection.
+        base64 (String) A base64 encoded String of the bytes to be sent.
+        connID (String) Connection id (optional) (default=)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>cameraCapturePicture<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,targetPath,useAutoFocus=True<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>cameraCapturePicture(targetPath,useAutoFocus=True)
+Take a picture and save it to the specified path.
+        targetPath (String)
+        useAutoFocus (Boolean)  (default=true)
+returns: (Bundle) A map of Booleans autoFocus and takePicture where True indicates success.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>cameraInteractiveCapturePicture<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,targetPath<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>cameraInteractiveCapturePicture(targetPath)
+Starts the image capture application to take a picture and saves it to the specified path.
+        targetPath (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>cameraStartPreview<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resolutionLevel=0,jpegQuality=20,filepath=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>cameraStartPreview(resolutionLevel=0,jpegQuality=20,filepath=None)
+Start Preview Mode. Throws &#39;preview&#39; events.
+        resolutionLevel (Integer) increasing this number provides higher resolution (default=0)
+        jpegQuality (Integer) a number from 0-100 (default=20)
+        filepath (String) Path to store jpeg files. (optional)
+returns: (boolean) True if successful<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>cameraStopPreview<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>cameraStopPreview(self)
+Stop the preview mode.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>checkAirplaneMode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>checkAirplaneMode(self)
+Checks the airplane mode setting.
+returns: (Boolean) True if airplane mode is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>checkBluetoothState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>checkBluetoothState(self)
+Checks Bluetooth state.
+returns: (Boolean) True if Bluetooth is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>checkNetworkRoaming<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>checkNetworkRoaming(self)
+Returns true if the device is considered roaming on the current network, for GSM purposes.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>checkRingerSilentMode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>checkRingerSilentMode(self)
+Checks the ringer silent mode setting.
+returns: (Boolean) True if ringer silent mode is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>checkScreenOn<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>checkScreenOn(self)
+Checks if the screen is on or off (requires API level 7).
+returns: (Boolean) True if the screen is currently on.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>checkWifiState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>checkWifiState(self)
+Checks Wifi state.
+returns: (Boolean) True if Wifi is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>clearContextMenu<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>clearContextMenu(self)
+Removes all items previously added to context menu.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>clearOptionsMenu<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>clearOptionsMenu(self)
+Removes all items previously added to options menu.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>contactsGet<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,attributes=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>contactsGet(attributes=None)
+Returns a List of all contacts.
+        attributes (JSONArray)  (optional)
+returns: (List) a List of contacts as Maps<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>contactsGetAttributes<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>contactsGetAttributes(self)
+Returns a List of all possible attributes for contacts.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>contactsGetById<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,id,attributes=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>contactsGetById(id,attributes=None)
+Returns contacts by ID.
+        id (Integer)
+        attributes (JSONArray)  (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>contactsGetCount<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>contactsGetCount(self)
+Returns the number of contacts.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>contactsGetIds<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>contactsGetIds(self)
+Returns a List of all contact IDs.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreateAlert<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=None,message=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreateAlert(title=None,message=None)
+Create alert dialog.
+        title (String)  (optional)
+        message (String)  (optional)
+Example (python)
+import android
+droid=android.Android()
+droid.dialogCreateAlert(&quot;I like swords.&quot;,&quot;Do you like swords?&quot;)
+droid.dialogSetPositiveButtonText(&quot;Yes&quot;)
+droid.dialogSetNegativeButtonText(&quot;No&quot;)
+droid.dialogShow()
+response=droid.dialogGetResponse().result
+droid.dialogDismiss()
+if response.has_key(&quot;which&quot;):
+result=response[&quot;which&quot;]
+if result==&quot;positive&quot;:
+print &quot;Yay! I like swords too!&quot;
+elif result==&quot;negative&quot;:
+print &quot;Oh. How sad.&quot;
+elif response.has_key(&quot;canceled&quot;): # Yes, I know it&#39;s mispelled.
+print &quot;You can&#39;t even make up your mind?&quot;
+else:
+print &quot;Unknown response=&quot;,response
+print &quot;Done&quot;<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreateDatePicker<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,year=1970,month=1,day=1<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreateDatePicker(year=1970,month=1,day=1)
+Create date picker dialog.
+        year (Integer)  (default=1970)
+        month (Integer)  (default=1)
+        day (Integer)  (default=1)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreateHorizontalProgress<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=None,message=None,maximum_progress=100<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreateHorizontalProgress(title=None,message=None,maximum_progress=100)
+Create a horizontal progress dialog.
+        title (String)  (optional)
+        message (String)  (optional)
+        maximum progress (Integer)  (default=100)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreateInput<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=&#39;Value&#39;,message=&#39;Pleaseentervalue:&#39;,defaultText=None,inputType=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreateInput(title=&quot;Value&quot;,message=&quot;Please enter value:&quot;,defaultText=None,inputType=None)
+Create a text input dialog.
+        title (String) title of the input box (default=Value)
+        message (String) message to display above the input box (default=Please enter value:)
+        defaultText (String) text to insert into the input box (optional)
+        inputType (String) type of input data, ie number or text (optional)
+For inputType, see InputTypes. Some useful ones are text, number, and textUri. Multiple flags can be
+supplied, seperated by &quot;|&quot;, ie: &quot;textUri|textAutoComplete&quot;<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreatePassword<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=&#39;Password&#39;,message=&#39;Pleaseenterpassword:&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreatePassword(title=&quot;Password&quot;,message=&quot;Please enter password:&quot;)
+Create a password input dialog.
+        title (String) title of the input box (default=Password)
+        message (String) message to display above the input box (default=Please enter password:)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreateSeekBar<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,starting_value=50,maximum_value=100,title=&#39;&#39;,message=&#39;&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreateSeekBar(starting_value=50,maximum_value=100,title,message)
+Create seek bar dialog.
+        starting value (Integer)  (default=50)
+        maximum value (Integer)  (default=100)
+        title (String)
+        message (String)
+Will produce &quot;dialog&quot; events on change, containing:
+&quot;progress&quot; - Position chosen, between 0 and max
+&quot;which&quot; = &quot;seekbar&quot;
+&quot;fromuser&quot; = true/false change is from user input
+Response will contain a &quot;progress&quot; element.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreateSpinnerProgress<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=None,message=None,maximum_progress=100<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreateSpinnerProgress(title=None,message=None,maximum_progress=100)
+Create a spinner progress dialog.
+        title (String)  (optional)
+        message (String)  (optional)
+        maximum progress (Integer)  (default=100)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogCreateTimePicker<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,hour=0,minute=0,is24hour=False<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogCreateTimePicker(hour=0,minute=0,is24hour=False)
+Create time picker dialog.
+        hour (Integer)  (default=0)
+        minute (Integer)  (default=0)
+        is24hour (Boolean) Use 24 hour clock (default=false)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogDismiss<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogDismiss(self)
+Dismiss dialog.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogGetInput<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=&#39;Value&#39;,message=&#39;Pleaseentervalue:&#39;,defaultText=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogGetInput(title=&quot;Value&quot;,message=&quot;Please enter value:&quot;,defaultText=None)
+Queries the user for a text input.
+        title (String) title of the input box (default=Value)
+        message (String) message to display above the input box (default=Please enter value:)
+        defaultText (String) text to insert into the input box (optional)
+The result is the user&#39;s input, or None (null) if cancel was hit.
+Example (python)
+import android
+droid=android.Android()
+print droid.dialogGetInput(&quot;Title&quot;,&quot;Message&quot;,&quot;Default&quot;).result<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogGetPassword<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=&#39;Password&#39;,message=&#39;Pleaseenterpassword:&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogGetPassword(title=&quot;Password&quot;,message=&quot;Please enter password:&quot;)
+Queries the user for a password.
+        title (String) title of the password box (default=Password)
+        message (String) message to display above the input box (default=Please enter password:)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogGetResponse<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogGetResponse(self)
+Returns dialog response.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogGetSelectedItems<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogGetSelectedItems(self)
+This method provides list of items user selected.
+returns: (Set) Selected items<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetCurrentProgress<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,current<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetCurrentProgress(current)
+Set progress dialog current value.
+        current (Integer)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetItems<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,items<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetItems(items)
+Set alert dialog list items.
+        items (JSONArray)
+This effectively creates list of options. Clicking on an item will immediately return an &quot;item&quot;
+element, which is the index of the selected item.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetMaxProgress<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,max<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetMaxProgress(max)
+Set progress dialog maximum value.
+        max (Integer)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetMultiChoiceItems<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,items,selected=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetMultiChoiceItems(items,selected=None)
+Set dialog multiple choice items and selection.
+        items (JSONArray)
+        selected (JSONArray) list of selected items (optional)
+This creates a list of check boxes. You can select multiple items out of the list. A response
+will not be returned until the dialog is closed, either with the Cancel key or a button
+(positive/negative/neutral). Use dialogGetSelectedItems() to find out what was
+selected.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetNegativeButtonText<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,text<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetNegativeButtonText(text)
+Set alert dialog button text.
+        text (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetNeutralButtonText<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,text<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetNeutralButtonText(text)
+Set alert dialog button text.
+        text (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetPositiveButtonText<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,text<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetPositiveButtonText(text)
+Set alert dialog positive button text.
+        text (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogSetSingleChoiceItems<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,items,selected=0<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogSetSingleChoiceItems(items,selected=0)
+Set dialog single choice items and selected item.
+        items (JSONArray)
+        selected (Integer) selected item index (default=0)
+This creates a list of radio buttons. You can select one item out of the list. A response will
+not be returned until the dialog is closed, either with the Cancel key or a button
+(positive/negative/neutral). Use dialogGetSelectedItems() to find out what was
+selected.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>dialogShow<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>dialogShow(self)
+Show dialog.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>environment<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>environment(self)
+A map of various useful environment details
+Map returned:
+TZ = Timezone
+id = Timezone ID
+display = Timezone display name
+offset = Offset from UTC (in ms)
+SDK = SDK Version
+download = default download path
+appcache = Location of application cache
+sdcard = Space on sdcard
+availblocks = Available blocks
+blockcount = Total Blocks
+blocksize = size of block.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventClearBuffer<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventClearBuffer(self)
+Clears all events from the event buffer.
+Example (python): droid.eventClearBuffer()<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventGetBrodcastCategories<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventGetBrodcastCategories(self)
+Lists all the broadcast signals we are listening for<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventPoll<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,number_of_events=1<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventPoll(number_of_events=1)
+Returns and removes the oldest n events (i.e. location or sensor update, etc.) from the event buffer.
+        number_of_events (Integer)  (default=1)
+returns: (List) A List of Maps of event properties.
+Actual data returned in the map will depend on the type of event.
+Example (python):
+import android, time
+droid = android.Android()
+droid.startSensing()
+time.sleep(1)
+droid.eventClearBuffer()
+time.sleep(1)
+e = eventPoll(1).result
+event_entry_number = 0
+x = e[event_entry_ number][&#39;data&#39;][&#39;xforce&#39;]
+e has the format:
+[{u&#39;data&#39;: {u&#39;accuracy&#39;: 0, u&#39;pitch&#39;: -0.48766891956329345, u&#39;xmag&#39;: -5.6875, u&#39;azimuth&#39;:
+0.3312483489513397, u&#39;zforce&#39;: 8.3492730000000002, u&#39;yforce&#39;: 4.5628165999999997, u&#39;time&#39;:
+1297072704.813, u&#39;ymag&#39;: -11.125, u&#39;zmag&#39;: -42.375, u&#39;roll&#39;: -0.059393649548292161, u&#39;xforce&#39;:
+0.42223078000000003}, u&#39;name&#39;: u&#39;sensors&#39;, u&#39;time&#39;: 1297072704813000L}]
+x has the string value of the x force data (0.42223078000000003) at the time of the event
+entry.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventPost<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,name,data,enqueue=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventPost(name,data,enqueue=None)
+Post an event to the event queue.
+        name (String) Name of event
+        data (String) Data contained in event.
+        enqueue (Boolean) Set to False if you don&#39;t want your events to be added to the event queue, just dispatched. (optional) (default=false)
+Example:
+import android
+from datetime import datetime
+droid = android.Android()
+t = datetime.now()
+droid.eventPost(&#39;Some Event&#39;, t)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventRegisterForBroadcast<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,category,enqueue=True<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventRegisterForBroadcast(category,enqueue=True)
+Registers a listener for a new broadcast signal
+        category (String)
+        enqueue (Boolean) Should this events be added to the event queue or only dispatched (default=true)
+Registers a listener for a new broadcast signal<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventUnregisterForBroadcast<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,category<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventUnregisterForBroadcast(category)
+Stop listening for a broadcast signal
+        category (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventWait<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,timeout=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventWait(timeout=None)
+Blocks until an event occurs. The returned event is removed from the buffer.
+        timeout (Integer) the maximum time to wait (optional)
+returns: (Event) Map of event properties.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>eventWaitFor<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,eventName,timeout=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>eventWaitFor(eventName,timeout=None)
+Blocks until an event with the supplied name occurs. The returned event is not removed from the buffer.
+        eventName (String)
+        timeout (Integer) the maximum time to wait (in ms) (optional)
+returns: (Event) Map of event properties.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>forceStopPackage<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,packageName<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>forceStopPackage(packageName)
+Force stops a package.
+        packageName (String) name of package<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>fullDismiss<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>fullDismiss(self)
+Dismiss Full Screen.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>fullQuery<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>fullQuery(self)
+Get Fullscreen Properties<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>fullQueryDetail<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,id<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>fullQueryDetail(id)
+Get fullscreen properties for a specific widget
+        id (String) id of layout widget<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>fullSetList<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,id,list<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>fullSetList(id,list)
+Attach a list to a fullscreen widget
+        id (String) id of layout widget
+        list (JSONArray) List to set<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>fullSetProperty<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,id,property,value<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>fullSetProperty(id,property,value)
+Set fullscreen widget property
+        id (String) id of layout widget
+        property (String) name of property to set
+        value (String) value to set property to<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>fullShow<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,layout<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>fullShow(layout)
+Show Full Screen.
+        layout (String) String containing View layout
+See wiki page for more
+detail.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>generateDtmfTones<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,phoneNumber,toneDuration=100<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>generateDtmfTones(phoneNumber,toneDuration=100)
+Generate DTMF tones for the given phone number.
+        phoneNumber (String)
+        toneDuration (Integer) duration of each tone in milliseconds (default=100)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>geocode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,latitude,longitude,maxResults=1<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>geocode(latitude,longitude,maxResults=1)
+Returns a list of addresses for the given latitude and longitude.
+        latitude (Double)
+        longitude (Double)
+        maxResults (Integer) maximum number of results (default=1)
+returns: (List) A list of addresses.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getCellLocation<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getCellLocation(self)
+Returns the current cell location.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getClipboard<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getClipboard(self)
+Read text from the clipboard.
+returns: (String) The text in the clipboard.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getConstants<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,classname<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getConstants(classname)
+Get list of constants (static final fields) for a class
+        classname (String) Class to get constants from<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getDeviceId<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getDeviceId(self)
+Returns the unique device ID, for example, the IMEI for GSM and the MEID for CDMA phones. Return null if device ID is not available.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getDeviceSoftwareVersion<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getDeviceSoftwareVersion(self)
+Returns the software version number for the device, for example, the IMEI/SV for GSM phones. Return null if the software version is not available.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getInput<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=&#39;SL4AInput&#39;,message=&#39;Pleaseentervalue:&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getInput(title=&quot;SL4A Input&quot;,message=&quot;Please enter value:&quot;)
+Queries the user for a text input.
+        title (String) title of the input box (default=SL4A Input)
+        message (String) message to display above the input box (default=Please enter value:)
+Deprecated in r3. Use dialogGetInput instead.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getIntent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getIntent(self)
+Returns the intent that launched the script.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getLastKnownLocation<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getLastKnownLocation(self)
+Returns the last known location of the device.
+returns: (Map) A map of location information by provider.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getLaunchableApplications<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getLaunchableApplications(self)
+Returns a list of all launchable application class names.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getLine1Number<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getLine1Number(self)
+Returns the phone number string for line 1, for example, the MSISDN for a GSM phone. Return null if it is unavailable.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getMaxMediaVolume<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getMaxMediaVolume(self)
+Returns the maximum media volume.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getMaxRingerVolume<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getMaxRingerVolume(self)
+Returns the maximum ringer volume.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getMediaVolume<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getMediaVolume(self)
+Returns the current media volume.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getNeighboringCellInfo<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getNeighboringCellInfo(self)
+Returns the neighboring cell information of the device.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getNetworkOperator<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getNetworkOperator(self)
+Returns the numeric name (MCC+MNC) of current registered operator.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getNetworkOperatorName<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getNetworkOperatorName(self)
+Returns the alphabetic name of current registered operator.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getNetworkType<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getNetworkType(self)
+Returns a the radio technology (network type) currently in use on the device.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getPackageVersion<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,packageName<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getPackageVersion(packageName)
+Returns package version name.
+        packageName (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getPackageVersionCode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,packageName<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getPackageVersionCode(packageName)
+Returns package version code.
+        packageName (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getPassword<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title=&#39;SL4APasswordInput&#39;,message=&#39;Pleaseenterpassword:&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getPassword(title=&quot;SL4A Password Input&quot;,message=&quot;Please enter password:&quot;)
+Queries the user for a password.
+        title (String) title of the input box (default=SL4A Password Input)
+        message (String) message to display above the input box (default=Please enter password:)
+Deprecated in r3. Use dialogGetPassword instead.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getPhoneType<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getPhoneType(self)
+Returns the device phone type.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getRingerVolume<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getRingerVolume(self)
+Returns the current ringer volume.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getRunningPackages<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getRunningPackages(self)
+Returns a list of packages running activities or services.
+returns: (List) List of packages running activities.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getScreenBrightness<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getScreenBrightness(self)
+Returns the screen backlight brightness.
+returns: (Integer) the current screen brightness between 0 and 255<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getScreenTimeout<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getScreenTimeout(self)
+Returns the current screen timeout in seconds.
+returns: (Integer) the current screen timeout in seconds.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getSimCountryIso<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getSimCountryIso(self)
+Returns the ISO country code equivalent for the SIM provider&#39;s country code.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getSimOperator<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getSimOperator(self)
+Returns the MCC+MNC (mobile country code + mobile network code) of the provider of the SIM. 5 or 6 decimal digits.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getSimOperatorName<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getSimOperatorName(self)
+Returns the Service Provider Name (SPN).<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getSimSerialNumber<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getSimSerialNumber(self)
+Returns the serial number of the SIM, if applicable. Return null if it is unavailable.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getSimState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getSimState(self)
+Returns the state of the device SIM card.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getSubscriberId<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getSubscriberId(self)
+Returns the unique subscriber ID, for example, the IMSI for a GSM phone. Return null if it is unavailable.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getVibrateMode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,ringer=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getVibrateMode(ringer=None)
+Checks Vibration setting. If ringer=true then query Ringer setting, else query Notification setting
+        ringer (Boolean)  (optional)
+returns: (Boolean) True if vibrate mode is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getVoiceMailAlphaTag<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getVoiceMailAlphaTag(self)
+Retrieves the alphabetic identifier associated with the voice mail number.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>getVoiceMailNumber<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>getVoiceMailNumber(self)
+Returns the voice mail number. Return null if it is unavailable.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>launch<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,className<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>launch(className)
+Start activity with the given class name.
+        className (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>log<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,message<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>log(message)
+Writes message to logcat.
+        message (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>makeIntent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,action,uri=None,type=None,extras=None,categories=None,packagename=None,classname=None,flags=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>makeIntent(action,uri=None,type=None,extras=None,categories=None,packagename=None,classname=None,flags=None)
+Create an Intent.
+        action (String)
+        uri (String)  (optional)
+        type (String) MIME type/subtype of the URI (optional)
+        extras (JSONObject) a Map of extras to add to the Intent (optional)
+        categories (JSONArray) a List of categories to add to the Intent (optional)
+        packagename (String) name of package. If used, requires classname to be useful (optional)
+        classname (String) name of class. If used, requires packagename to be useful (optional)
+        flags (Integer) Intent flags (optional)
+returns: (Intent) An object representing an Intent<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>makeToast<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,message<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>makeToast(message)
+Displays a short-duration Toast notification.
+        message (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaIsPlaying<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,tag=&#39;default&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaIsPlaying(tag=&quot;default&quot;)
+Checks if media file is playing.
+        tag (String) string identifying resource (default=default)
+returns: (boolean) true if playing<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlay<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,url,tag=&#39;default&#39;,play=True<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlay(url,tag=&quot;default&quot;,play=True)
+Open a media file
+        url (String) url of media resource
+        tag (String) string identifying resource (default=default)
+        play (Boolean) start playing immediately (default=true)
+returns: (boolean) true if play successful<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlayClose<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,tag=&#39;default&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlayClose(tag=&quot;default&quot;)
+Close media file
+        tag (String) string identifying resource (default=default)
+returns: (boolean) true if successful<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlayInfo<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,tag=&#39;default&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlayInfo(tag=&quot;default&quot;)
+Information on current media
+        tag (String) string identifying resource (default=default)
+returns: (Map) Media Information<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlayList<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlayList(self)
+Lists currently loaded media
+returns: (Set) List of Media Tags<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlayPause<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,tag=&#39;default&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlayPause(tag=&quot;default&quot;)
+pause playing media file
+        tag (String) string identifying resource (default=default)
+returns: (boolean) true if successful<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlaySeek<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,msec,tag=&#39;default&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlaySeek(msec,tag=&quot;default&quot;)
+Seek To Position
+        msec (Integer) Position in millseconds
+        tag (String) string identifying resource (default=default)
+returns: (int) New Position (in ms)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlaySetLooping<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,enabled=True,tag=&#39;default&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlaySetLooping(enabled=True,tag=&quot;default&quot;)
+Set Looping
+        enabled (Boolean)  (default=true)
+        tag (String) string identifying resource (default=default)
+returns: (boolean) True if successful<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>mediaPlayStart<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,tag=&#39;default&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>mediaPlayStart(tag=&quot;default&quot;)
+start playing media file
+        tag (String) string identifying resource (default=default)
+returns: (boolean) true if successful<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>notify<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,title,message<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>notify(title,message)
+Displays a notification that will be canceled when the user clicks on it.
+        title (String) title
+        message (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>phoneCall<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uri<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>phoneCall(uri)
+Calls a contact/phone number by URI.
+        uri (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>phoneCallNumber<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,phone_number<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>phoneCallNumber(phone_number)
+Calls a phone number.
+        phone number (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>phoneDial<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uri<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>phoneDial(uri)
+Dials a contact/phone number by URI.
+        uri (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>phoneDialNumber<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,phone_number<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>phoneDialNumber(phone_number)
+Dials a phone number.
+        phone number (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>pick<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uri<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>pick(uri)
+Display content to be picked by URI (e.g. contacts)
+        uri (String)
+returns: (Intent) A map of result values.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>pickContact<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>pickContact(self)
+Displays a list of contacts to pick from.
+returns: (Intent) A map of result values.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>pickPhone<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>pickPhone(self)
+Displays a list of phone numbers to pick from.
+returns: (String) The selected phone number.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>prefGetAll<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,filename=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>prefGetAll(filename=None)
+Get list of Shared Preference Values
+        filename (String) Desired preferences file. If not defined, uses the default Shared Preferences. (optional)
+returns: (Map) Map of key,value<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>prefGetValue<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,key,filename=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>prefGetValue(key,filename=None)
+Read a value from shared preferences
+        key (String)
+        filename (String) Desired preferences file. If not defined, uses the default Shared Preferences. (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>prefPutValue<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,key,value,filename=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>prefPutValue(key,value,filename=None)
+Write a value to shared preferences
+        key (String)
+        value (Object)
+        filename (String) Desired preferences file. If not defined, uses the default Shared Preferences. (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>queryAttributes<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uri<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>queryAttributes(uri)
+Content Resolver Query Attributes
+        uri (String) The URI, using the content:// scheme, for the content to retrieve.
+returns: (JSONArray) a list of available columns for a given content uri<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>queryContent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uri,attributes=None,selection=None,selectionArgs=None,order=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>queryContent(uri,attributes=None,selection=None,selectionArgs=None,order=None)
+Content Resolver Query
+        uri (String) The URI, using the content:// scheme, for the content to retrieve.
+        attributes (JSONArray) A list of which columns to return. Passing null will return all columns (optional)
+        selection (String) A filter declaring which rows to return (optional)
+        selectionArgs (JSONArray) You may include ?s in selection, which will be replaced by the values from selectionArgs (optional)
+        order (String) How to order the rows (optional)
+returns: (List) result of query as Maps
+Exactly as per ContentResolver.query<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>readBatteryData<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>readBatteryData(self)
+Returns the most recently recorded battery data.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>readLocation<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>readLocation(self)
+Returns the current location as indicated by all available providers.
+returns: (Map) A map of location information by provider.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>readPhoneState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>readPhoneState(self)
+Returns the current phone state and incoming number.
+returns: (Bundle) A Map of &quot;state&quot; and &quot;incomingNumber&quot;<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>readSensors<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>readSensors(self)
+Returns the most recently recorded sensor data.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>readSignalStrengths<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>readSignalStrengths(self)
+Returns the current signal strengths.
+returns: (Bundle) A map of &quot;gsm_signal_strength&quot;<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>receiveEvent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>receiveEvent(self)
+Returns and removes the oldest event (i.e. location or sensor update, etc.) from the event buffer.
+returns: (Event) Map of event properties.
+Deprecated in r4. Use eventPoll instead.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>recognizeSpeech<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,prompt=None,language=None,languageModel=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>recognizeSpeech(prompt=None,language=None,languageModel=None)
+Recognizes user&#39;s speech and returns the most likely result.
+        prompt (String) text prompt to show to the user when asking them to speak (optional)
+        language (String) language override to inform the recognizer that it should expect speech in a language different than the one set in the java.util.Locale.getDefault() (optional)
+        languageModel (String) informs the recognizer which speech model to prefer (see android.speech.RecognizeIntent) (optional)
+returns: (String) An empty string in case the speech cannot be recongnized.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>recorderCaptureVideo<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,targetPath,duration=None,recordAudio=True<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>recorderCaptureVideo(targetPath,duration=None,recordAudio=True)
+Records video (and optionally audio) from the camera and saves it to the given location. Duration specifies the maximum duration of the recording session. If duration is not provided this method will return immediately and the recording will only be stopped when recorderStop is called or when a scripts exits. Otherwise it will block for the time period equal to the duration argument.
+        targetPath (String)
+        duration (Integer)  (optional)
+        recordAudio (Boolean)  (default=true)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>recorderStartMicrophone<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,targetPath<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>recorderStartMicrophone(targetPath)
+Records audio from the microphone and saves it to the given location.
+        targetPath (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>recorderStartVideo<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,targetPath,duration=0,videoSize=1<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>recorderStartVideo(targetPath,duration=0,videoSize=1)
+Records video from the camera and saves it to the given location. Duration specifies the maximum duration of the recording session. If duration is 0 this method will return and the recording will only be stopped when recorderStop is called or when a scripts exits. Otherwise it will block for the time period equal to the duration argument.videoSize: 0=160x120, 1=320x240, 2=352x288, 3=640x480, 4=800x480.
+        targetPath (String)
+        duration (Integer)  (default=0)
+        videoSize (Integer)  (default=1)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>recorderStop<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>recorderStop(self)
+Stops a previously started recording.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>requiredVersion<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,requiredVersion<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>requiredVersion(requiredVersion)
+Checks if version of SL4A is greater than or equal to the specified version.
+        requiredVersion (Integer)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>rpcPostEvent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,name,data<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>rpcPostEvent(name,data)
+Post an event to the event queue.
+        name (String)
+        data (String)
+Deprecated in r4. Use eventPost instead.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>scanBarcode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>scanBarcode(self)
+Starts the barcode scanner.
+returns: (Intent) A Map representation of the result Intent.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>search<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,query<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>search(query)
+Starts a search for the given query.
+        query (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sendBroadcast<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,action,uri=None,type=None,extras=None,packagename=None,classname=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sendBroadcast(action,uri=None,type=None,extras=None,packagename=None,classname=None)
+Send a broadcast.
+        action (String)
+        uri (String)  (optional)
+        type (String) MIME type/subtype of the URI (optional)
+        extras (JSONObject) a Map of extras to add to the Intent (optional)
+        packagename (String) name of package. If used, requires classname to be useful (optional)
+        classname (String) name of class. If used, requires packagename to be useful (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sendBroadcastIntent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,intent<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sendBroadcastIntent(intent)
+Send Broadcast Intent
+        intent (Intent) Intent in the format as returned from makeIntent<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sendEmail<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,to,subject,body,attachmentUri=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sendEmail(to,subject,body,attachmentUri=None)
+Launches an activity that sends an e-mail message to a given recipient.
+        to (String) A comma separated list of recipients.
+        subject (String)
+        body (String)
+        attachmentUri (String)  (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sensorsGetAccuracy<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sensorsGetAccuracy(self)
+Returns the most recently received accuracy value.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sensorsGetLight<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sensorsGetLight(self)
+Returns the most recently received light value.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sensorsReadAccelerometer<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sensorsReadAccelerometer(self)
+Returns the most recently received accelerometer values.
+returns: (List) a List of Floats [(acceleration on the) X axis, Y axis, Z axis].<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sensorsReadMagnetometer<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sensorsReadMagnetometer(self)
+Returns the most recently received magnetic field values.
+returns: (List) a List of Floats [(magnetic field value for) X axis, Y axis, Z axis].<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>sensorsReadOrientation<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>sensorsReadOrientation(self)
+Returns the most recently received orientation values.
+returns: (List) a List of Doubles [azimuth, pitch, roll].<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setClipboard<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,text<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setClipboard(text)
+Put text in the clipboard.
+        text (String)
+Creates a new AndroidFacade that simplifies the interface to various Android APIs.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setMediaVolume<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,volume<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setMediaVolume(volume)
+Sets the media volume.
+        volume (Integer)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultBoolean<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultBoolean(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Boolean)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultBooleanArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultBooleanArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Boolean)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultByte<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultByte(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Byte)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultByteArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultByteArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Byte)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultChar<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultChar(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Character)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultCharArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultCharArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Character)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultDouble<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultDouble(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Double)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultDoubleArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultDoubleArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Double)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultFloat<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultFloat(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Float)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultFloatArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultFloatArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Float)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultInteger<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultInteger(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Integer)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultIntegerArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultIntegerArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Integer)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultLong<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultLong(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Long)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultLongArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultLongArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Long)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultSerializable<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultSerializable(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Serializable)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultShort<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultShort(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Short)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultShortArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultShortArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (Short)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultString<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultString(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setResultStringArray<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resultCode,resultValue<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setResultStringArray(resultCode,resultValue)
+Sets the result of a script execution. Whenever the script APK is called via startActivityForResult(), the resulting intent will contain SCRIPT_RESULT extra with the given value.
+        resultCode (Integer) The result code to propagate back to the originating activity, often RESULT_CANCELED (0) or RESULT_OK (-1)
+        resultValue (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setRingerVolume<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,volume<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setRingerVolume(volume)
+Sets the ringer volume.
+        volume (Integer)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setScreenBrightness<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,value<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setScreenBrightness(value)
+Sets the the screen backlight brightness.
+        value (Integer) brightness value between 0 and 255
+returns: (Integer) the original screen brightness.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>setScreenTimeout<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,value<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>setScreenTimeout(value)
+Sets the screen timeout to this number of seconds.
+        value (Integer)
+returns: (Integer) The original screen timeout.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsDeleteMessage<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,id<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsDeleteMessage(id)
+Deletes a message.
+        id (Integer)
+returns: (Boolean) True if the message was deleted<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsGetAttributes<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsGetAttributes(self)
+Returns a List of all possible message attributes.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsGetMessageById<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,id,attributes=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsGetMessageById(id,attributes=None)
+Returns message attributes.
+        id (Integer) message ID
+        attributes (JSONArray)  (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsGetMessageCount<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,unreadOnly,folder=&#39;inbox&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsGetMessageCount(unreadOnly,folder=&quot;inbox&quot;)
+Returns the number of messages.
+        unreadOnly (Boolean)
+        folder (String)  (default=inbox)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsGetMessageIds<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,unreadOnly,folder=&#39;inbox&#39;<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsGetMessageIds(unreadOnly,folder=&quot;inbox&quot;)
+Returns a List of all message IDs.
+        unreadOnly (Boolean)
+        folder (String)  (default=inbox)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsGetMessages<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,unreadOnly,folder=&#39;inbox&#39;,attributes=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsGetMessages(unreadOnly,folder=&quot;inbox&quot;,attributes=None)
+Returns a List of all messages.
+        unreadOnly (Boolean)
+        folder (String)  (default=inbox)
+        attributes (JSONArray)  (optional)
+returns: (List) a List of messages as Maps<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsMarkMessageRead<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,ids,read<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsMarkMessageRead(ids,read)
+Marks messages as read.
+        ids (JSONArray) List of message IDs to mark as read.
+        read (Boolean)
+returns: (Integer) number of messages marked read<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>smsSend<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,destinationAddress,text<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>smsSend(destinationAddress,text)
+Sends an SMS.
+        destinationAddress (String) typically a phone number
+        text (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startActivity<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,action,uri=None,type=None,extras=None,wait=None,packagename=None,classname=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startActivity(action,uri=None,type=None,extras=None,wait=None,packagename=None,classname=None)
+Starts an activity.
+        action (String)
+        uri (String)  (optional)
+        type (String) MIME type/subtype of the URI (optional)
+        extras (JSONObject) a Map of extras to add to the Intent (optional)
+        wait (Boolean) block until the user exits the started activity (optional)
+        packagename (String) name of package. If used, requires classname to be useful (optional)
+        classname (String) name of class. If used, requires packagename to be useful (optional)
+packagename and classname, if provided, are used in a &#39;setComponent&#39; call.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startActivityForResult<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,action,uri=None,type=None,extras=None,packagename=None,classname=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startActivityForResult(action,uri=None,type=None,extras=None,packagename=None,classname=None)
+Starts an activity and returns the result.
+        action (String)
+        uri (String)  (optional)
+        type (String) MIME type/subtype of the URI (optional)
+        extras (JSONObject) a Map of extras to add to the Intent (optional)
+        packagename (String) name of package. If used, requires classname to be useful (optional)
+        classname (String) name of class. If used, requires packagename to be useful (optional)
+returns: (Intent) A Map representation of the result Intent.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startActivityForResultIntent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,intent<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startActivityForResultIntent(intent)
+Starts an activity and returns the result.
+        intent (Intent) Intent in the format as returned from makeIntent
+returns: (Intent) A Map representation of the result Intent.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startActivityIntent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,intent,wait=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startActivityIntent(intent,wait=None)
+Start Activity using Intent
+        intent (Intent) Intent in the format as returned from makeIntent
+        wait (Boolean) block until the user exits the started activity (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startEventDispatcher<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,port=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startEventDispatcher(port=None)
+Opens up a socket where you can read for events posted
+        port (Integer) Port to use (optional) (default=0)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startInteractiveVideoRecording<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,path<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startInteractiveVideoRecording(path)
+Starts the video capture application to record a video and saves it to the specified path.
+        path (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startLocating<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,minDistance=60000,minUpdateDistance=30<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startLocating(minDistance=60000,minUpdateDistance=30)
+Starts collecting location data.
+        minDistance (Integer) minimum time between updates in milliseconds (default=60000)
+        minUpdateDistance (Integer) minimum distance between updates in meters (default=30)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startSensing<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,sampleSize=5<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startSensing(sampleSize=5)
+Starts recording sensor data to be available for polling.
+        sampleSize (Integer) number of samples for calculating average readings (default=5)
+Deprecated in 4. Use startSensingTimed or startSensingThreshhold instead.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startSensingThreshold<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,sensorNumber,threshold,axis<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startSensingThreshold(sensorNumber,threshold,axis)
+Records to the Event Queue sensor data exceeding a chosen threshold.
+        sensorNumber (Integer) 1 = Orientation, 2 = Accelerometer, 3 = Magnetometer and 4 = Light
+        threshold (Integer) Threshold level for chosen sensor (integer)
+        axis (Integer) 0 = No axis, 1 = X, 2 = Y, 3 = X+Y, 4 = Z, 5= X+Z, 6 = Y+Z, 7 = X+Y+Z<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startSensingTimed<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,sensorNumber,delayTime<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startSensingTimed(sensorNumber,delayTime)
+Starts recording sensor data to be available for polling.
+        sensorNumber (Integer) 1 = All, 2 = Accelerometer, 3 = Magnetometer and 4 = Light
+        delayTime (Integer) Minimum time between readings in milliseconds<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startTrackingPhoneState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startTrackingPhoneState(self)
+Starts tracking phone state.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>startTrackingSignalStrengths<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>startTrackingSignalStrengths(self)
+Starts tracking signal strengths.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>stopEventDispatcher<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>stopEventDispatcher(self)
+Stops the event server, you can&#39;t read in the port anymore<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>stopLocating<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>stopLocating(self)
+Stops collecting location data.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>stopSensing<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>stopSensing(self)
+Stops collecting sensor data.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>stopTrackingPhoneState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>stopTrackingPhoneState(self)
+Stops tracking phone state.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>stopTrackingSignalStrengths<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>stopTrackingSignalStrengths(self)
+Stops tracking signal strength.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>toggleAirplaneMode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,enabled=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>toggleAirplaneMode(enabled=None)
+Toggles airplane mode on and off.
+        enabled (Boolean)  (optional)
+returns: (Boolean) True if airplane mode is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>toggleBluetoothState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,enabled=None,prompt=True<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>toggleBluetoothState(enabled=None,prompt=True)
+Toggle Bluetooth on and off.
+        enabled (Boolean)  (optional)
+        prompt (Boolean) Prompt the user to confirm changing the Bluetooth state. (default=true)
+returns: (Boolean) True if Bluetooth is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>toggleRingerSilentMode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,enabled=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>toggleRingerSilentMode(enabled=None)
+Toggles ringer silent mode on and off.
+        enabled (Boolean)  (optional)
+returns: (Boolean) True if ringer silent mode is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>toggleVibrateMode<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,enabled=None,ringer=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>toggleVibrateMode(enabled=None,ringer=None)
+Toggles vibrate mode on and off. If ringer=true then set Ringer setting, else set Notification setting
+        enabled (Boolean)  (optional)
+        ringer (Boolean)  (optional)
+returns: (Boolean) True if vibrate mode is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>toggleWifiState<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,enabled=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>toggleWifiState(enabled=None)
+Toggle Wifi on and off.
+        enabled (Boolean)  (optional)
+returns: (Boolean) True if Wifi is enabled.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>ttsIsSpeaking<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>ttsIsSpeaking(self)
+Returns True if speech is currently in progress.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>ttsSpeak<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,message<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>ttsSpeak(message)
+Speaks the provided message via TTS.
+        message (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>vibrate<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,duration=300<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>vibrate(duration=300)
+Vibrates the phone or a specified duration in milliseconds.
+        duration (Integer) duration in milliseconds (default=300)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>view<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,uri,type=None,extras=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>view(uri,type=None,extras=None)
+Start activity with view action by URI (i.e. browser, contacts, etc.).
+        uri (String)
+        type (String) MIME type/subtype of the URI (optional)
+        extras (JSONObject) a Map of extras to add to the Intent (optional)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>viewContacts<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>viewContacts(self)
+Opens the list of contacts.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>viewHtml<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,path<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>viewHtml(path)
+Opens the browser to display a local HTML file.
+        path (String) the path to the HTML file<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>viewMap<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,query<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>viewMap(query,_e.g._pizza,_123_My_Street)
+Opens a map search for query (e.g. pizza, 123 My Street).
+        query, e.g. pizza, 123 My Street (String)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>waitForEvent<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,eventName,timeout=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>waitForEvent(eventName,timeout=None)
+Blocks until an event with the supplied name occurs. The returned event is not removed from the buffer.
+        eventName (String)
+        timeout (Integer) the maximum time to wait (optional)
+returns: (Event) Map of event properties.
+Deprecated in r4. Use eventWaitFor instead.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wakeLockAcquireBright<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wakeLockAcquireBright(self)
+Acquires a bright wake lock (CPU on, screen bright).<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wakeLockAcquireDim<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wakeLockAcquireDim(self)
+Acquires a dim wake lock (CPU on, screen dim).<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wakeLockAcquireFull<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wakeLockAcquireFull(self)
+Acquires a full wake lock (CPU on, screen bright, keyboard bright).<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wakeLockAcquirePartial<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wakeLockAcquirePartial(self)
+Acquires a partial wake lock (CPU on).<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wakeLockRelease<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wakeLockRelease(self)
+Releases the wake lock.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>webViewShow<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,url,wait=None<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>webViewShow(url,wait=None)
+Display a WebView with the given URL.
+        url (String)
+        wait (Boolean) block until the user exits the WebView (optional)
+See wiki page for more
+detail.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>webcamAdjustQuality<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resolutionLevel=0,jpegQuality=20<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>webcamAdjustQuality(resolutionLevel=0,jpegQuality=20)
+Adjusts the quality of the webcam stream while it is running.
+        resolutionLevel (Integer) increasing this number provides higher resolution (default=0)
+        jpegQuality (Integer) a number from 0-100 (default=20)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>webcamStart<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self,resolutionLevel=0,jpegQuality=20,port=0<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>webcamStart(resolutionLevel=0,jpegQuality=20,port=0)
+Starts an MJPEG stream and returns a Tuple of address and port for the stream.
+        resolutionLevel (Integer) increasing this number provides higher resolution (default=0)
+        jpegQuality (Integer) a number from 0-100 (default=20)
+        port (Integer) If port is specified, the webcam service will bind to port, otherwise it will pick any available port. (default=0)<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>webcamStop<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>webcamStop(self)
+Stops the webcam stream.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiDisconnect<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiDisconnect(self)
+Disconnects from the currently active access point.
+returns: (Boolean) True if the operation succeeded.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiGetConnectionInfo<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiGetConnectionInfo(self)
+Returns information about the currently active access point.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiGetScanResults<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiGetScanResults(self)
+Returns the list of access points found during the most recent Wifi scan.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiLockAcquireFull<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiLockAcquireFull(self)
+Acquires a full Wifi lock.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiLockAcquireScanOnly<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiLockAcquireScanOnly(self)
+Acquires a scan only Wifi lock.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiLockRelease<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiLockRelease(self)
+Releases a previously acquired Wifi lock.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiReassociate<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiReassociate(self)
+Reassociates with the currently active access point.
+returns: (Boolean) True if the operation succeeded.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiReconnect<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiReconnect(self)
+Reconnects to the currently active access point.
+returns: (Boolean) True if the operation succeeded.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;tr&gt;&lt;td&gt;&lt;p</span> <span class="na">class=</span><span class="s">&quot;method-name&quot;</span><span class="nt">&gt;</span>wifiStartScan<span class="nt">&lt;/p&gt;&lt;/td&gt;&lt;td&gt;</span>self<span class="nt">&lt;br</span> <span class="nt">/&gt;&lt;div</span> <span class="na">class=</span><span class="s">&quot;discription&quot;</span><span class="nt">&gt;</span>wifiStartScan(self)
+Starts a scan for Wifi access points.
+returns: (Boolean) True if the scan was initiated successfully.<span class="nt">&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;</span> 
+
+<span class="nt">&lt;/table&gt;</span>
+</pre></div>
+</td></tr></table>
+   <div class="page-links">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://kylelk.github.io/kylekersey/code/androidhelper.html.html">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>   
+   </div>
+    <pre>
+The MIT License (MIT)
+
+Copyright (c) 2014 kyle kersey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+    </pre>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <title>Qpython Run Button Maker</title>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48664735-1', 'kylelk.github.io');
+    ga('send', 'pageview');
+
+    </script>
+	</head>
+<script>
+	var header = '\<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"\>\</script\> \n'+
+	'\<script type="text/javascript" src="http://balupton.github.com/jquery-syntaxhighlighter/scripts/jquery.syntaxhighlighter.min.js"\></script\> \n'+
+	'<script type="text/javascript"\>$.SyntaxHighlighter.init({\'lineNumbers\':true});<\/script>\n<body>\n<pre class="highlight" style="border:none;"> \n';
+	var footer = '\n</pre>\n</body>';
+	
+    function escapeHtml(unsafe) {
+        return unsafe.replace(/&/g, '&amp;').replace(/>/g, '&gt;').replace(/</g, '&lt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+    }
+    function encodePythonSource(){
+        var pythonSource = document.getElementById("pythonSource").value;
+        var encodedSource = encodeURIComponent(pythonSource);
+        var buttonCode = '<br>\n<FORM METHOD="LINK" ACTION="python://'+encodedSource+'"><INPUT TYPE="submit" VALUE="Run With Qpython"></FORM>';
+        var htmlEscaped = escapeHtml(pythonSource);
+        var outputCode = buttonCode+header+htmlEscaped+footer;
+        document.getElementById("encodedOutput").value=outputCode;
+    }
+</script>
+<html>
+    <body>
+        <p>
+        Paste your python code into the text area then hit the button
+        </p>
+        <textarea id="pythonSource" rows="25" cols="100" placeholder="python code"></textarea>
+        <br>
+        <textarea id="encodedOutput" rows="4" cols="100" readonly></textarea>
+        <br>
+        <button onClick="encodePythonSource()">Create Embedded Code</button>
+    </body>
+</html>
