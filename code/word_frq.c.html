@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>word_frq.c</title>
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
+<script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<style>
+    .source .hll { background-color: #ffffcc }
+.source  { background: #f8f8f8; }
+.source .c { color: #408080; font-style: italic } /* Comment */
+.source .err { border: 1px solid #FF0000 } /* Error */
+.source .k { color: #008000; font-weight: bold } /* Keyword */
+.source .o { color: #666666 } /* Operator */
+.source .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.source .cp { color: #BC7A00 } /* Comment.Preproc */
+.source .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.source .cs { color: #408080; font-style: italic } /* Comment.Special */
+.source .gd { color: #A00000 } /* Generic.Deleted */
+.source .ge { font-style: italic } /* Generic.Emph */
+.source .gr { color: #FF0000 } /* Generic.Error */
+.source .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.source .gi { color: #00A000 } /* Generic.Inserted */
+.source .go { color: #888888 } /* Generic.Output */
+.source .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.source .gs { font-weight: bold } /* Generic.Strong */
+.source .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.source .gt { color: #0044DD } /* Generic.Traceback */
+.source .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.source .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.source .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.source .kp { color: #008000 } /* Keyword.Pseudo */
+.source .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.source .kt { color: #B00040 } /* Keyword.Type */
+.source .m { color: #666666 } /* Literal.Number */
+.source .s { color: #BA2121 } /* Literal.String */
+.source .na { color: #7D9029 } /* Name.Attribute */
+.source .nb { color: #008000 } /* Name.Builtin */
+.source .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.source .no { color: #880000 } /* Name.Constant */
+.source .nd { color: #AA22FF } /* Name.Decorator */
+.source .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.source .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.source .nf { color: #0000FF } /* Name.Function */
+.source .nl { color: #A0A000 } /* Name.Label */
+.source .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.source .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.source .nv { color: #19177C } /* Name.Variable */
+.source .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.source .w { color: #bbbbbb } /* Text.Whitespace */
+.source .mf { color: #666666 } /* Literal.Number.Float */
+.source .mh { color: #666666 } /* Literal.Number.Hex */
+.source .mi { color: #666666 } /* Literal.Number.Integer */
+.source .mo { color: #666666 } /* Literal.Number.Oct */
+.source .sb { color: #BA2121 } /* Literal.String.Backtick */
+.source .sc { color: #BA2121 } /* Literal.String.Char */
+.source .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.source .s2 { color: #BA2121 } /* Literal.String.Double */
+.source .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.source .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.source .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.source .sx { color: #008000 } /* Literal.String.Other */
+.source .sr { color: #BB6688 } /* Literal.String.Regex */
+.source .s1 { color: #BA2121 } /* Literal.String.Single */
+.source .ss { color: #19177C } /* Literal.String.Symbol */
+.source .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.source .vc { color: #19177C } /* Name.Variable.Class */
+.source .vg { color: #19177C } /* Name.Variable.Global */
+.source .vi { color: #19177C } /* Name.Variable.Instance */
+.source .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48664735-1', 'kylelk.github.io');
+    ga('send', 'pageview');
+
+    </script>
+	</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">Kyle Kersey</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li><a href="code/">Code</a></li>
+         <li><a href="about/">About</a></li>
+          <li><a href="contact/">Contact</a></li>
+          <li><a href="work/">Work</a></li>
+          <li><a href="">Site Map</a></li>
+      </ul>
+   </div>
+</nav>
+<div class="main-area">
+    <b><a id="raw_link" href="/code/raw/word_frq.c">View Raw</a></b>
+    <br>    
+    <table class="sourcetable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186</pre></div></td><td class="code"><div class="source"><pre><span class="cm">/* Frequency of words</span>
+<span class="cm"> *</span>
+<span class="cm"> * This program reads the standard input,</span>
+<span class="cm"> * counts word frequencies</span>
+<span class="cm"> * and output them in a list sorted by frequencies.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Author: Andreas Abel, andreas.abel@ifi.lmu.de</span>
+<span class="cm"> * This code is placed in the public domain.</span>
+<span class="cm"> * Do with it what you like, but leave my name in it.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include &lt;stdio.h&gt;        </span>
+<span class="cp">#include &lt;stdlib.h&gt;       </span><span class="cm">/* malloc */</span><span class="cp"></span>
+<span class="cp">#include &lt;string.h&gt;       </span><span class="cm">/* strdup */</span><span class="cp"></span>
+<span class="cp">#include &lt;search.h&gt;       </span><span class="cm">/* glibc search tress */</span><span class="cp"></span>
+
+<span class="cp">#define MAX_LENGTH 10000  </span><span class="cm">/* maximum word length */</span><span class="cp"></span>
+
+<span class="cm">/******************************************************************</span>
+
+<span class="cm"> Tries (dictionaries)</span>
+
+<span class="cm"> define a finite map from strings (words) to numbers (frequencies)</span>
+
+<span class="cm"> ******************************************************************/</span>
+
+<span class="k">struct</span> <span class="n">node</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">freq</span><span class="p">;</span>    <span class="cm">/* frequency of the word that terminates at the current node */</span>
+  <span class="k">struct</span> <span class="n">node</span> <span class="o">*</span><span class="p">(</span><span class="n">next</span><span class="p">[</span><span class="mi">26</span><span class="p">]);</span> <span class="cm">/* array of pointers to children */</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">node</span> <span class="n">Node</span><span class="p">;</span>
+
+<span class="cm">/* allocate a new Node */</span>
+<span class="n">Node</span> <span class="o">*</span><span class="nf">newNode</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">Node</span><span class="p">));</span> <span class="cm">/* calloc sets everything to 0 */</span>
+<span class="p">}</span>
+
+<span class="cm">/* global variable: the trie in which all words are stored with their freq. */</span>
+
+<span class="n">Node</span> <span class="o">*</span><span class="n">the_trie</span><span class="p">;</span> <span class="cm">/* will be initialized in main */</span>
+
+<span class="cm">/* Process standard input, count frequencies */</span>
+<span class="kt">void</span> <span class="nf">calc</span> <span class="p">()</span> <span class="p">{</span>
+
+  <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>                 <span class="cm">/* the currently read character */</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>                 <span class="cm">/* is equivalent in a=0 .. z=25 */</span>
+  <span class="n">Node</span> <span class="o">*</span><span class="n">trie</span> <span class="o">=</span> <span class="n">the_trie</span><span class="p">;</span> <span class="cm">/* current position in trie, never NULL */</span>
+
+  <span class="k">while</span> <span class="p">((</span><span class="n">c</span> <span class="o">=</span> <span class="n">getchar</span><span class="p">())</span> <span class="o">!=</span> <span class="n">EOF</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="cm">/* compute i */</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="sc">&#39;A&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;Z&#39;</span><span class="p">))</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="sc">&#39;A&#39;</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">((</span><span class="n">c</span> <span class="o">&gt;=</span> <span class="sc">&#39;a&#39;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">c</span> <span class="o">&lt;=</span> <span class="sc">&#39;z&#39;</span><span class="p">))</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span> 
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="cm">/* not a letter, counts as word separator */</span>
+      <span class="n">trie</span><span class="o">-&gt;</span><span class="n">freq</span><span class="o">++</span><span class="p">;</span>    <span class="cm">/* increment counter for current word */</span>
+      <span class="n">trie</span> <span class="o">=</span> <span class="n">the_trie</span><span class="p">;</span> <span class="cm">/* start with new word */</span>
+      <span class="k">continue</span><span class="p">;</span>        <span class="cm">/* next iteration */</span>
+    <span class="p">}</span>
+    <span class="cm">/* Now i=0..25 */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+      <span class="n">trie</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">newNode</span><span class="p">();</span>
+    <span class="n">trie</span> <span class="o">=</span> <span class="n">trie</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="cm">/* the current word to print */</span>
+
+<span class="kt">char</span> <span class="n">the_string</span><span class="p">[</span><span class="n">MAX_LENGTH</span><span class="p">];</span>
+
+<span class="cm">/* Iterate through trie, output frequencies */</span>
+
+<span class="kt">void</span> <span class="nf">trie_foreach</span>
+  <span class="p">(</span> <span class="n">Node</span> <span class="o">*</span><span class="n">trie</span>               <span class="cm">/* current position in trie </span>
+<span class="cm">                               never NULL */</span>
+  <span class="p">,</span> <span class="kt">int</span> <span class="n">string_pos</span>           <span class="cm">/* next free character in string </span>
+<span class="cm">                               always &lt; MAX_LENGTH */</span>
+  <span class="p">,</span> <span class="kt">void</span> <span class="n">action</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span><span class="p">)</span>  <span class="cm">/* what to do with freq,word pair */</span>
+  <span class="p">)</span> 
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">;</span> <span class="cm">/* counter for loop, 0..25 */</span>
+
+  <span class="cm">/* cut off strings which are too long */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">string_pos</span> <span class="o">&gt;=</span> <span class="n">MAX_LENGTH</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="cm">/* print frequency of current string */</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">the_string</span><span class="p">[</span><span class="n">string_pos</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="cm">/* terminate string */</span>
+    <span class="n">action</span><span class="p">(</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">freq</span><span class="p">,</span> <span class="n">the_string</span><span class="p">);</span>
+  <span class="p">}</span>  
+
+  <span class="cm">/* recursively, output children */</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">26</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">the_string</span><span class="p">[</span><span class="n">string_pos</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="sc">&#39;a&#39;</span><span class="p">;</span>
+      <span class="n">trie_foreach</span><span class="p">(</span><span class="n">trie</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">string_pos</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">action</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="cm">/* an action for trie-iteration */</span>
+
+<span class="kt">void</span> <span class="nf">print_action</span><span class="p">(</span><span class="kt">int</span> <span class="n">freq</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">word</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%6d</span><span class="se">\t</span><span class="s">%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">word</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/******************************************************************</span>
+
+<span class="cm">  sorting the output</span>
+
+<span class="cm">  we use the glibc search trees to implement a sorted map </span>
+<span class="cm">  from frequencies to words</span>
+
+<span class="cm"> ******************************************************************/</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">freq</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">word</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Entry</span><span class="p">;</span>
+
+<span class="n">Entry</span> <span class="o">*</span><span class="nf">newEntry</span><span class="p">(</span><span class="kt">int</span> <span class="n">freq</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">Entry</span> <span class="o">*</span><span class="n">entry</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">Entry</span><span class="p">));</span>
+  <span class="n">entry</span><span class="o">-&gt;</span><span class="n">freq</span> <span class="o">=</span> <span class="n">freq</span><span class="p">;</span>
+  <span class="n">entry</span><span class="o">-&gt;</span><span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">entry</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/* compare entries                          */</span>
+<span class="cm">/* sort by frequency, biggest first         */</span>
+<span class="cm">/* for equal freq. sort alphabetically      */</span>
+<span class="kt">int</span> <span class="nf">compare_entries</span> <span class="p">(</span><span class="k">const</span> <span class="n">Entry</span> <span class="o">*</span><span class="n">e1</span><span class="p">,</span> <span class="k">const</span> <span class="n">Entry</span> <span class="o">*</span><span class="n">e2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">e2</span><span class="o">-&gt;</span><span class="n">freq</span> <span class="o">-</span> <span class="n">e1</span><span class="o">-&gt;</span><span class="n">freq</span><span class="p">;</span> 
+  <span class="k">if</span> <span class="p">(</span><span class="n">dist</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">e1</span><span class="o">-&gt;</span><span class="n">word</span><span class="p">,</span> <span class="n">e2</span><span class="o">-&gt;</span><span class="n">word</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">dist</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Entry</span> <span class="o">*</span><span class="n">the_map</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="cm">/* the search tree as a global variable */</span>
+
+<span class="cm">/* inserting a new word into the map */</span>
+<span class="kt">void</span> <span class="nf">insert_action</span><span class="p">(</span><span class="kt">int</span> <span class="n">freq</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">word</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">Entry</span> <span class="o">*</span><span class="n">entry</span> <span class="o">=</span> <span class="n">newEntry</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">strdup</span><span class="p">(</span><span class="n">word</span><span class="p">));</span> <span class="cm">/* word is volatile */</span>
+  <span class="n">tsearch</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">the_map</span><span class="p">,</span> <span class="n">compare_entries</span><span class="p">);</span>   <span class="cm">/* insert new entry */</span>
+<span class="p">}</span>
+
+<span class="cm">/* the print action for search tree traversal */</span>
+<span class="kt">void</span> <span class="nf">map_print_action</span> <span class="p">(</span><span class="n">Entry</span> <span class="o">**</span><span class="n">entry</span><span class="p">,</span> <span class="n">VISIT</span> <span class="n">visit</span><span class="p">,</span> <span class="kt">int</span> <span class="n">level</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="n">visit</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">case</span> <span class="n">leaf</span>:
+  <span class="k">case</span> <span class="n">postorder</span>:
+    <span class="n">print_action</span><span class="p">((</span><span class="o">*</span><span class="n">entry</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">freq</span><span class="p">,</span> <span class="p">(</span><span class="o">*</span><span class="n">entry</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">word</span><span class="p">);</span>
+  <span class="p">}</span>    
+<span class="p">}</span>
+
+<span class="cm">/******************************************************************</span>
+
+<span class="cm">  main</span>
+
+<span class="cm"> ******************************************************************/</span>
+
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;frq -- word frequency analyser written by andreas.abel@ifi.lmu.de in C</span><span class="se">\n\n</span><span class="s">analysing stdin</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="cm">/* Initialize root trie */</span>
+  <span class="n">the_trie</span> <span class="o">=</span> <span class="n">newNode</span><span class="p">();</span>
+
+  <span class="cm">/* Process stdin until EOF */</span>
+  <span class="n">calc</span><span class="p">();</span>
+
+  <span class="cm">/* Extract results */</span>
+  <span class="n">trie_foreach</span> <span class="p">(</span><span class="n">the_trie</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">insert_action</span><span class="p">);</span>
+
+  <span class="cm">/* Print results, sorted by frequency */</span>
+  <span class="n">twalk</span><span class="p">(</span><span class="n">the_map</span><span class="p">,</span> <span class="n">map_print_action</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+   <div class="page-links">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://kylelk.github.io/kylekersey/code/word_frq.c.html">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>   
+   </div>
+    <pre>
+The MIT License (MIT)
+
+Copyright (c) 2014 kyle kersey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+    </pre>
+</div>
+</body>
+</html>

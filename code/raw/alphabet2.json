@@ -1,0 +1,30 @@
+{
+    "alphabet": {
+        "A": "Alpha", 
+        "C": "Charlie", 
+        "B": "Bravo", 
+        "E": "Echo", 
+        "D": "Delta", 
+        "G": "Golf", 
+        "F": "Foxtrot", 
+        "I": "India", 
+        "H": "Hotel", 
+        "K": "Kilo", 
+        "J": "Juliet", 
+        "M": "Mike", 
+        "L": "Lima", 
+        "O": "Oscar", 
+        "N": "November", 
+        "Q": "Quebec", 
+        "P": "Papa", 
+        "S": "Sierra", 
+        "R": "Romeo", 
+        "U": "Uniform", 
+        "T": "Tango", 
+        "W": "Whiskey", 
+        "V": "Victor", 
+        "Y": "Yankee", 
+        "X": "X-ray", 
+        "Z": "Zulu"
+    }
+}

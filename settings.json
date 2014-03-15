@@ -1,0 +1,23 @@
+{
+    "raw_code_dir":"code/raw/",
+    "highlighted_code_dir":"code/",
+    "templates_dir":"templates/",
+    "website_url":"http://kylelk.github.io/kylekersey/",
+    
+    "filetypes":{
+        "py":"python",
+        "c":"c",
+        "java":"java",
+        "html": "html",
+        "htm":"html",
+        "js":"javascript",
+        "cu":"c",
+        "xml":"xml",
+        "json":"json",
+        "cpp":"cpp",
+        "css":"css",
+        "plist":"xml",
+        "php":"php",
+        "s":"nasm"
+    }
+}

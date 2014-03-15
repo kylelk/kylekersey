@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sha256.cu</title>
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
+<script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<style>
+    .source .hll { background-color: #ffffcc }
+.source  { background: #f8f8f8; }
+.source .c { color: #408080; font-style: italic } /* Comment */
+.source .err { border: 1px solid #FF0000 } /* Error */
+.source .k { color: #008000; font-weight: bold } /* Keyword */
+.source .o { color: #666666 } /* Operator */
+.source .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.source .cp { color: #BC7A00 } /* Comment.Preproc */
+.source .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.source .cs { color: #408080; font-style: italic } /* Comment.Special */
+.source .gd { color: #A00000 } /* Generic.Deleted */
+.source .ge { font-style: italic } /* Generic.Emph */
+.source .gr { color: #FF0000 } /* Generic.Error */
+.source .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.source .gi { color: #00A000 } /* Generic.Inserted */
+.source .go { color: #888888 } /* Generic.Output */
+.source .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.source .gs { font-weight: bold } /* Generic.Strong */
+.source .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.source .gt { color: #0044DD } /* Generic.Traceback */
+.source .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.source .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.source .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.source .kp { color: #008000 } /* Keyword.Pseudo */
+.source .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.source .kt { color: #B00040 } /* Keyword.Type */
+.source .m { color: #666666 } /* Literal.Number */
+.source .s { color: #BA2121 } /* Literal.String */
+.source .na { color: #7D9029 } /* Name.Attribute */
+.source .nb { color: #008000 } /* Name.Builtin */
+.source .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.source .no { color: #880000 } /* Name.Constant */
+.source .nd { color: #AA22FF } /* Name.Decorator */
+.source .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.source .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.source .nf { color: #0000FF } /* Name.Function */
+.source .nl { color: #A0A000 } /* Name.Label */
+.source .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.source .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.source .nv { color: #19177C } /* Name.Variable */
+.source .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.source .w { color: #bbbbbb } /* Text.Whitespace */
+.source .mf { color: #666666 } /* Literal.Number.Float */
+.source .mh { color: #666666 } /* Literal.Number.Hex */
+.source .mi { color: #666666 } /* Literal.Number.Integer */
+.source .mo { color: #666666 } /* Literal.Number.Oct */
+.source .sb { color: #BA2121 } /* Literal.String.Backtick */
+.source .sc { color: #BA2121 } /* Literal.String.Char */
+.source .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.source .s2 { color: #BA2121 } /* Literal.String.Double */
+.source .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.source .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.source .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.source .sx { color: #008000 } /* Literal.String.Other */
+.source .sr { color: #BB6688 } /* Literal.String.Regex */
+.source .s1 { color: #BA2121 } /* Literal.String.Single */
+.source .ss { color: #19177C } /* Literal.String.Symbol */
+.source .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.source .vc { color: #19177C } /* Name.Variable.Class */
+.source .vg { color: #19177C } /* Name.Variable.Global */
+.source .vi { color: #19177C } /* Name.Variable.Instance */
+.source .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48664735-1', 'kylelk.github.io');
+    ga('send', 'pageview');
+
+    </script>
+	</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">Kyle Kersey</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li><a href="code/">Code</a></li>
+         <li><a href="about/">About</a></li>
+          <li><a href="contact/">Contact</a></li>
+          <li><a href="work/">Work</a></li>
+          <li><a href="">Site Map</a></li>
+      </ul>
+   </div>
+</nav>
+<div class="main-area">
+    <b><a id="raw_link" href="/code/raw/sha256.cu">View Raw</a></b>
+    <br>    
+    <table class="sourcetable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482</pre></div></td><td class="code"><div class="source"><pre><span class="c1">// -*- compile-command: &quot;nvcc -m 32 -arch sm_35 -Xptxas=-v,-abi=no -cubin sha256.cu&quot;; -*-</span>
+ 
+<span class="cm">/*</span>
+<span class="cm"> * Copyright 2013 Allan MacKinnon &lt;allanmac@pixel.io&gt;. All rights reserved.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+ 
+<span class="cp">#include &lt;cuda.h&gt;</span>
+ 
+<span class="cp">#define WARP_SIZE                    32</span>
+ 
+<span class="cp">#define NUM_WARPS_IN_BLOCK           4 </span><span class="c1">// arbitrarily chosen for now</span>
+<span class="cp">#define NUM_THREADS_IN_BLOCK         (NUM_WARPS_IN_BLOCK * WARP_SIZE)</span>
+ 
+<span class="cp">#define LAUNCH_BOUNDS                __launch_bounds__(NUM_THREADS_IN_BLOCK,1)</span>
+<span class="cp">#define DEVICE_FUNCTION_QUALIFIERS   __device__ __forceinline__</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// SQUASH C++ NAME MANGLING SO WE CAN LOAD AT RUNTIME VIA DRIVER API</span>
+<span class="c1">//</span>
+<span class="cp">#define KERNEL_QUALIFIERS            extern &quot;C&quot; __global__  </span>
+ 
+<span class="c1">//</span>
+<span class="c1">//</span>
+<span class="c1">//</span>
+ 
+<span class="cp">#define STRINGIFY(x)  &quot;&quot;#x</span>
+<span class="cp">#define COMMA         ,</span>
+<span class="cp">#define EMPTY</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// BIG-ENDIAN UNSIGNED 32-bit</span>
+<span class="c1">//</span>
+ 
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">beu32</span><span class="p">;</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// 64 WORDS + MAGIC</span>
+<span class="c1">//</span>
+<span class="cp">#define W64(notLast,last)                        \</span>
+<span class="cp">  W(0 ,0  ,0  ,0  ,0 , 0x428a2f98)   notLast     \</span>
+<span class="cp">  W(1 ,0  ,0  ,0  ,0 , 0x71374491)   notLast     \</span>
+<span class="cp">  W(2 ,0  ,0  ,0  ,0 , 0xb5c0fbcf)   notLast     \</span>
+<span class="cp">  W(3 ,0  ,0  ,0  ,0 , 0xe9b5dba5)   notLast     \</span>
+<span class="cp">  W(4 ,0  ,0  ,0  ,0 , 0x3956c25b)   notLast     \</span>
+<span class="cp">  W(5 ,0  ,0  ,0  ,0 , 0x59f111f1)   notLast     \</span>
+<span class="cp">  W(6 ,0  ,0  ,0  ,0 , 0x923f82a4)   notLast     \</span>
+<span class="cp">  W(7 ,0  ,0  ,0  ,0 , 0xab1c5ed5)   notLast     \</span>
+<span class="cp">  W(8 ,0  ,0  ,0  ,0 , 0xd807aa98)   notLast     \</span>
+<span class="cp">  W(9 ,0  ,0  ,0  ,0 , 0x12835b01)   notLast     \</span>
+<span class="cp">  W(10,0  ,0  ,0  ,0 , 0x243185be)   notLast     \</span>
+<span class="cp">  W(11,0  ,0  ,0  ,0 , 0x550c7dc3)   notLast     \</span>
+<span class="cp">  W(12,0  ,0  ,0  ,0 , 0x72be5d74)   notLast     \</span>
+<span class="cp">  W(13,0  ,0  ,0  ,0 , 0x80deb1fe)   notLast     \</span>
+<span class="cp">  W(14,0  ,0  ,0  ,0 , 0x9bdc06a7)   notLast     \</span>
+<span class="cp">  W(15,0  ,0  ,0  ,0 , 0xc19bf174)   notLast     \</span>
+<span class="cp">  W(16,0  ,1  ,9  ,14, 0xe49b69c1)   notLast     \</span>
+<span class="cp">  W(17,1  ,2  ,10 ,15, 0xefbe4786)   notLast     \</span>
+<span class="cp">  W(18,2  ,3  ,11 ,16, 0x0fc19dc6)   notLast     \</span>
+<span class="cp">  W(19,3  ,4  ,12 ,17, 0x240ca1cc)   notLast     \</span>
+<span class="cp">  W(20,4  ,5  ,13 ,18, 0x2de92c6f)   notLast     \</span>
+<span class="cp">  W(21,5  ,6  ,14 ,19, 0x4a7484aa)   notLast     \</span>
+<span class="cp">  W(22,6  ,7  ,15 ,20, 0x5cb0a9dc)   notLast     \</span>
+<span class="cp">  W(23,7  ,8  ,16 ,21, 0x76f988da)   notLast     \</span>
+<span class="cp">  W(24,8  ,9  ,17 ,22, 0x983e5152)   notLast     \</span>
+<span class="cp">  W(25,9  ,10 ,18 ,23, 0xa831c66d)   notLast     \</span>
+<span class="cp">  W(26,10 ,11 ,19 ,24, 0xb00327c8)   notLast     \</span>
+<span class="cp">  W(27,11 ,12 ,20 ,25, 0xbf597fc7)   notLast     \</span>
+<span class="cp">  W(28,12 ,13 ,21 ,26, 0xc6e00bf3)   notLast     \</span>
+<span class="cp">  W(29,13 ,14 ,22 ,27, 0xd5a79147)   notLast     \</span>
+<span class="cp">  W(30,14 ,15 ,23 ,28, 0x06ca6351)   notLast     \</span>
+<span class="cp">  W(31,15 ,16 ,24 ,29, 0x14292967)   notLast     \</span>
+<span class="cp">  W(32,16 ,17 ,25 ,30, 0x27b70a85)   notLast     \</span>
+<span class="cp">  W(33,17 ,18 ,26 ,31, 0x2e1b2138)   notLast     \</span>
+<span class="cp">  W(34,18 ,19 ,27 ,32, 0x4d2c6dfc)   notLast     \</span>
+<span class="cp">  W(35,19 ,20 ,28 ,33, 0x53380d13)   notLast     \</span>
+<span class="cp">  W(36,20 ,21 ,29 ,34, 0x650a7354)   notLast     \</span>
+<span class="cp">  W(37,21 ,22 ,30 ,35, 0x766a0abb)   notLast     \</span>
+<span class="cp">  W(38,22 ,23 ,31 ,36, 0x81c2c92e)   notLast     \</span>
+<span class="cp">  W(39,23 ,24 ,32 ,37, 0x92722c85)   notLast     \</span>
+<span class="cp">  W(40,24 ,25 ,33 ,38, 0xa2bfe8a1)   notLast     \</span>
+<span class="cp">  W(41,25 ,26 ,34 ,39, 0xa81a664b)   notLast     \</span>
+<span class="cp">  W(42,26 ,27 ,35 ,40, 0xc24b8b70)   notLast     \</span>
+<span class="cp">  W(43,27 ,28 ,36 ,41, 0xc76c51a3)   notLast     \</span>
+<span class="cp">  W(44,28 ,29 ,37 ,42, 0xd192e819)   notLast     \</span>
+<span class="cp">  W(45,29 ,30 ,38 ,43, 0xd6990624)   notLast     \</span>
+<span class="cp">  W(46,30 ,31 ,39 ,44, 0xf40e3585)   notLast     \</span>
+<span class="cp">  W(47,31 ,32 ,40 ,45, 0x106aa070)   notLast     \</span>
+<span class="cp">  W(48,32 ,33 ,41 ,46, 0x19a4c116)   notLast     \</span>
+<span class="cp">  W(49,33 ,34 ,42 ,47, 0x1e376c08)   notLast     \</span>
+<span class="cp">  W(50,34 ,35 ,43 ,48, 0x2748774c)   notLast     \</span>
+<span class="cp">  W(51,35 ,36 ,44 ,49, 0x34b0bcb5)   notLast     \</span>
+<span class="cp">  W(52,36 ,37 ,45 ,50, 0x391c0cb3)   notLast     \</span>
+<span class="cp">  W(53,37 ,38 ,46 ,51, 0x4ed8aa4a)   notLast     \</span>
+<span class="cp">  W(54,38 ,39 ,47 ,52, 0x5b9cca4f)   notLast     \</span>
+<span class="cp">  W(55,39 ,40 ,48 ,53, 0x682e6ff3)   notLast     \</span>
+<span class="cp">  W(56,40 ,41 ,49 ,54, 0x748f82ee)   notLast     \</span>
+<span class="cp">  W(57,41 ,42 ,50 ,55, 0x78a5636f)   notLast     \</span>
+<span class="cp">  W(58,42 ,43 ,51 ,56, 0x84c87814)   notLast     \</span>
+<span class="cp">  W(59,43 ,44 ,52 ,57, 0x8cc70208)   notLast     \</span>
+<span class="cp">  W(60,44 ,45 ,53 ,58, 0x90befffa)   notLast     \</span>
+<span class="cp">  W(61,45 ,46 ,54 ,59, 0xa4506ceb)   notLast     \</span>
+<span class="cp">  W(62,46 ,47 ,55 ,60, 0xbef9a3f7)   notLast     \</span>
+<span class="cp">  W(63,47 ,48 ,56 ,61, 0xc67178f2)   last</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// HASH 8</span>
+<span class="c1">//</span>
+<span class="cp">#define H8(notLast,last)                        \</span>
+<span class="cp">  H(0, a, 0x6a09e667)   notLast                 \</span>
+<span class="cp">  H(1, b, 0xbb67ae85)   notLast                 \</span>
+<span class="cp">  H(2, c, 0x3c6ef372)   notLast                 \</span>
+<span class="cp">  H(3, d, 0xa54ff53a)   notLast                 \</span>
+<span class="cp">  H(4, e, 0x510e527f)   notLast                 \</span>
+<span class="cp">  H(5, f, 0x9b05688c)   notLast                 \</span>
+<span class="cp">  H(6, g, 0x1f83d9ab)   notLast                 \</span>
+<span class="cp">  H(7, h, 0x5be0cd19)   last</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// MIX 8</span>
+<span class="c1">//</span>
+<span class="cp">#define M8(notLast,last)                      \</span>
+<span class="cp">  M(h, g)   notLast                           \</span>
+<span class="cp">  M(g, f)   notLast                           \</span>
+<span class="cp">  M(f, e)   notLast                           \</span>
+<span class="cp">  M(e, d)   notLast                           \</span>
+<span class="cp">  M(d, c)   notLast                           \</span>
+<span class="cp">  M(c, b)   notLast                           \</span>
+<span class="cp">  M(b, a)   notLast                           \</span>
+<span class="cp">  M(a, t)   last</span>
+ 
+ 
+<span class="c1">//</span>
+<span class="c1">// CHUNK 16</span>
+<span class="c1">//</span>
+<span class="cp">#define C16(notLast,last)                     \</span>
+<span class="cp">  C(0 )   notLast                             \</span>
+<span class="cp">  C(1 )   notLast                             \</span>
+<span class="cp">  C(2 )   notLast                             \</span>
+<span class="cp">  C(3 )   notLast                             \</span>
+<span class="cp">  C(4 )   notLast                             \</span>
+<span class="cp">  C(5 )   notLast                             \</span>
+<span class="cp">  C(6 )   notLast                             \</span>
+<span class="cp">  C(7 )   notLast                             \</span>
+<span class="cp">  C(8 )   notLast                             \</span>
+<span class="cp">  C(9 )   notLast                             \</span>
+<span class="cp">  C(10)   notLast                             \</span>
+<span class="cp">  C(11)   notLast                             \</span>
+<span class="cp">  C(12)   notLast                             \</span>
+<span class="cp">  C(13)   notLast                             \</span>
+<span class="cp">  C(14)   notLast                             \</span>
+<span class="cp">  C(15)   last</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// NOT AND</span>
+<span class="c1">//</span>
+<span class="n">DEVICE_FUNCTION_QUALIFIERS</span>
+<span class="n">beu32</span>
+<span class="nf">notand</span><span class="p">(</span><span class="n">beu32</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">beu32</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if __CUDA_ARCH__ &gt;= 100</span>
+  <span class="n">beu32</span> <span class="n">d</span><span class="p">;</span>
+  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;not.b32  %1, %1;     </span><span class="se">\n\t</span><span class="s">&quot;</span>
+      <span class="s">&quot;and.b32  %0, %1, %2; </span><span class="se">\n\t</span><span class="s">&quot;</span>
+      <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">d</span><span class="p">),</span> <span class="s">&quot;+r&quot;</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">b</span><span class="p">));</span>
+  <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+<span class="cp">#else</span>
+  <span class="k">return</span> <span class="o">~</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// ROTATE RIGHT</span>
+<span class="c1">//</span>
+<span class="n">DEVICE_FUNCTION_QUALIFIERS</span>
+<span class="n">beu32</span>
+<span class="nf">ror</span><span class="p">(</span><span class="k">const</span> <span class="n">beu32</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if __CUDA_ARCH__ &gt;= 350 </span><span class="c1">// BEWARE THIS CRASHES NVCC/CICC 5.0 -- BUG REPORTED</span>
+  <span class="n">beu32</span> <span class="n">d</span><span class="p">;</span>
+  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;shf.r.clamp.b32 %0, %1, %2, %3;&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+  <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+<span class="cp">#else</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">a</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">n</span><span class="p">));</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// SHIFT RIGHT</span>
+<span class="c1">//</span>
+<span class="n">DEVICE_FUNCTION_QUALIFIERS</span>
+<span class="n">beu32</span>
+<span class="nf">shr</span><span class="p">(</span><span class="k">const</span> <span class="n">beu32</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if __CUDA_ARCH__ &gt;= 999 </span><span class="c1">// 200 -- DISABLED</span>
+  <span class="n">beu32</span> <span class="n">d</span><span class="p">;</span>
+  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;vshr.u32.u32.u32.clamp %0, %1, %2;&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
+  <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+<span class="cp">#else</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// ADD 3</span>
+<span class="c1">//</span>
+<span class="n">DEVICE_FUNCTION_QUALIFIERS</span>
+<span class="n">beu32</span>
+<span class="nf">add3</span><span class="p">(</span><span class="k">const</span> <span class="n">beu32</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">beu32</span> <span class="n">b</span><span class="p">,</span> <span class="k">const</span> <span class="n">beu32</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#if __CUDA_ARCH__ &gt;= 999 </span><span class="c1">// 200 -- DISABLED</span>
+  <span class="n">beu32</span> <span class="n">d</span><span class="p">;</span>
+  <span class="n">asm</span><span class="p">(</span><span class="s">&quot;vadd.u32.u32.u32.add %0, %1, %2, %3;&quot;</span> <span class="o">:</span> <span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="o">:</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+  <span class="k">return</span> <span class="n">d</span><span class="p">;</span>
+<span class="cp">#else</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+ 
+<span class="c1">//</span>
+<span class="c1">// MIX ALPHAS</span>
+<span class="c1">//</span>
+<span class="n">DEVICE_FUNCTION_QUALIFIERS</span>
+<span class="kt">void</span>
+<span class="nf">hmix</span><span class="p">(</span><span class="n">beu32</span><span class="o">*</span> <span class="n">a</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">b</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">c</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">d</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">e</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">f</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">g</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">h</span><span class="p">,</span>
+     <span class="n">beu32</span><span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="cp">#undef  M</span>
+<span class="cp">#define M(alpha,mix) *alpha = *mix;</span>
+ 
+  <span class="n">M8</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+<span class="p">}</span>
+ 
+<span class="c1">////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">// SHA-256 CHUNK FUNC</span>
+<span class="c1">//</span>
+<span class="cp">#undef  C</span>
+<span class="cp">#define C(i)              const beu32 c##i</span>
+ 
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  const beu32 hin##i, beu32* hout##i</span>
+ 
+<span class="n">DEVICE_FUNCTION_QUALIFIERS</span>
+<span class="kt">void</span>
+<span class="nf">sha256_chunk</span><span class="p">(</span><span class="n">C16</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">),</span>
+             <span class="n">H8</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">))</span>
+<span class="p">{</span>
+  <span class="c1">//</span>
+  <span class="c1">// DECLARE &#39;W&#39; REGISTERS</span>
+  <span class="c1">//</span>
+<span class="cp">#undef  W</span>
+<span class="cp">#define W(i,m16,m15,m7,m2,magic)  beu32 w##i;</span>
+ 
+  <span class="n">W64</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">// INIT W REGISTERS 0-15 OFF OF CHUNK REGISTERS</span>
+  <span class="c1">//</span>
+<span class="cp">#undef  C</span>
+<span class="cp">#define C(i)  w##i = c##i;</span>
+ 
+  <span class="n">C16</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">// INIT W REGISTERS 16-63</span>
+  <span class="c1">//</span>
+<span class="cp">#undef  W</span>
+<span class="cp">#define W(i,m16,m15,m7,m2,magic)                                \</span>
+<span class="cp">  if (i &gt;= 16) {                                                \</span>
+<span class="cp">    w##i = w##m16 +                                             \</span>
+<span class="cp">      add3(w##m7,                                               \</span>
+<span class="cp">           (ror(w##m15, 7) ^ ror(w##m15,18) ^ shr(w##m15, 3)),  \</span>
+<span class="cp">           (ror(w##m2, 17) ^ ror(w##m2, 19) ^ shr(w##m2, 10))); \</span>
+<span class="cp">  }</span>
+ 
+  <span class="n">W64</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">// INIT H REGISTERS</span>
+  <span class="c1">//</span>
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  beu32 alpha = hin##i;</span>
+ 
+  <span class="n">H8</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">// MAIN LOOP</span>
+  <span class="c1">//</span>
+<span class="cp">#undef  W</span>
+<span class="cp">#define W(i,m16,m15,m7,m2,magic)                        \</span>
+<span class="cp">  {                                                     \</span>
+<span class="cp">    beu32 t = add3(add3(h,w##i,magic),                  \</span>
+<span class="cp">                   (ror(e,6) ^ ror(e,11) ^ ror(e,25)),  \</span>
+<span class="cp">                   ((e &amp; f) ^ notand(e,g)));            \</span>
+<span class="cp">                                                        \</span>
+<span class="cp">    d += t;                                             \</span>
+<span class="cp">                                                        \</span>
+<span class="cp">    t = add3(t,                                         \</span>
+<span class="cp">             (ror(a,2) ^ ror(a,13) ^ ror(a,22)),        \</span>
+<span class="cp">             ((a &amp; (b ^ c)) ^ (b &amp; c)));                \</span>
+<span class="cp">                                                        \</span>
+<span class="cp">    hmix(&amp;a,&amp;b,&amp;c,&amp;d,&amp;e,&amp;f,&amp;g,&amp;h,&amp;t);                   \</span>
+<span class="cp">  }</span>
+      
+  <span class="n">W64</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">// ADD H MAGIC TO ALPHAS</span>
+  <span class="c1">//</span>
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  *hout##i = hin##i + alpha;</span>
+ 
+  <span class="n">H8</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+<span class="p">}</span>
+ 
+<span class="c1">////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">// CHUNK 0 IS KICKSTARTED WITH CONSTANT HASH INPUTS</span>
+<span class="c1">// </span>
+<span class="cp">#undef  C</span>
+<span class="cp">#define C(i)              const beu32 c##i</span>
+ 
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  beu32* hout##i</span>
+ 
+<span class="n">DEVICE_FUNCTION_QUALIFIERS</span>
+<span class="kt">void</span>
+<span class="nf">sha256_chunk0</span><span class="p">(</span><span class="n">C16</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">),</span><span class="n">H8</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="cp">#undef  C</span>
+<span class="cp">#define C(i)              c##i</span>
+ 
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  magic,hout##i</span>
+ 
+  <span class="n">sha256_chunk</span><span class="p">(</span><span class="n">C16</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">),</span><span class="n">H8</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">));</span>
+<span class="p">}</span>
+ 
+ 
+<span class="c1">////////////////////////////////////////////////////////////////////////</span>
+<span class="c1">//</span>
+<span class="c1">// TEST KERNEL</span>
+<span class="c1">//</span>
+ 
+<span class="cp">#define PXL_SHA256_KERNEL_MAIN</span>
+<span class="cp">#ifdef  PXL_SHA256_KERNEL_MAIN</span>
+ 
+<span class="c1">//</span>
+<span class="c1">//</span>
+<span class="c1">//</span>
+ 
+<span class="cp">#undef  C</span>
+<span class="cp">#define C(i)  const beu32 c##i</span>
+ 
+<span class="n">KERNEL_QUALIFIERS</span>
+<span class="n">LAUNCH_BOUNDS</span>
+<span class="kt">void</span>
+<span class="nf">sha256TestKernel</span><span class="p">(</span><span class="n">beu32</span><span class="o">*</span> <span class="k">const</span> <span class="n">hash</span><span class="p">,</span> <span class="n">C16</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">))</span>
+<span class="p">{</span>
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  beu32 hout##i;</span>
+ 
+  <span class="n">H8</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+ 
+<span class="cp">#undef  C</span>
+<span class="cp">#define C(i)              c##i</span>
+ 
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  &amp;hout##i</span>
+ 
+  <span class="n">sha256_chunk0</span><span class="p">(</span><span class="n">C16</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">),</span><span class="n">H8</span><span class="p">(</span><span class="n">COMMA</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">));</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">// SAVE H&#39;S FOR NOW JUST SO NVCC DOESN&#39;T OPTIMIZE EVERYTHING AWAY</span>
+  <span class="c1">//</span>
+<span class="cp">#undef  H</span>
+<span class="cp">#define H(i,alpha,magic)  hash[i] = hout##i;</span>
+ 
+  <span class="n">H8</span><span class="p">(</span><span class="n">EMPTY</span><span class="p">,</span><span class="n">EMPTY</span><span class="p">);</span>
+<span class="p">}</span>
+ 
+<span class="c1">//</span>
+<span class="c1">//</span>
+<span class="c1">//</span>
+ 
+<span class="cp">#include &lt;stdio.h&gt;</span>
+ 
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">cudaError_t</span> <span class="n">err</span><span class="p">;</span>
+  <span class="kt">int</span>         <span class="n">device</span> <span class="o">=</span> <span class="p">(</span><span class="n">argc</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+ 
+  <span class="n">cudaDeviceProp</span> <span class="n">props</span><span class="p">;</span>
+  <span class="n">err</span> <span class="o">=</span> <span class="n">cudaGetDeviceProperties</span><span class="p">(</span><span class="o">&amp;</span><span class="n">props</span><span class="p">,</span><span class="n">device</span><span class="p">);</span>
+ 
+  <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> 
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+ 
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s (%2d)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">props</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">props</span><span class="p">.</span><span class="n">multiProcessorCount</span><span class="p">);</span>
+ 
+  <span class="n">cudaSetDevice</span><span class="p">(</span><span class="n">device</span><span class="p">);</span>
+                            
+  <span class="c1">//</span>
+  <span class="c1">// LAUNCH KERNEL</span>
+  <span class="c1">//</span>
+ 
+  <span class="n">beu32</span><span class="o">*</span> <span class="n">d_hash</span><span class="p">;</span>
+  
+  <span class="n">cudaMalloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d_hash</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">beu32</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span><span class="p">);</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">// FROM &quot;FIPS 180-2, Secure Hash Standard, with Change Notice 1&quot;</span>
+  <span class="c1">//</span>
+  <span class="c1">// B.1 SHA-256 Example (One-Block Message)</span>
+  <span class="c1">//</span>
+  <span class="c1">// Let the message, M, be the 24-bit (l = 24) ASCII string &quot;abc &quot;,</span>
+  <span class="c1">// which is equivalent to the following binary string:</span>
+  <span class="c1">//</span>
+  <span class="n">sha256TestKernel</span><span class="o">&lt;&lt;&lt;</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">&gt;&gt;&gt;</span><span class="p">(</span><span class="n">d_hash</span><span class="p">,</span>
+                            <span class="mh">0x61626380</span><span class="p">,</span> 
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000000</span><span class="p">,</span>
+                            <span class="mh">0x00000018</span><span class="p">);</span>
+ 
+  <span class="n">err</span> <span class="o">=</span> <span class="n">cudaDeviceSynchronize</span><span class="p">();</span>
+ 
+  <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Err = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">err</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+  <span class="p">}</span>
+  
+  <span class="c1">//</span>
+  <span class="c1">//</span>
+  <span class="c1">//</span>
+ 
+  <span class="n">beu32</span> <span class="n">hash</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+ 
+  <span class="n">cudaMemcpy</span><span class="p">(</span><span class="n">hash</span><span class="p">,</span><span class="n">d_hash</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">beu32</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span><span class="n">cudaMemcpyDeviceToHost</span><span class="p">);</span>
+ 
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;gold: %08x %08x %08x %08x %08x %08x %08x %08x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+         <span class="mh">0xba7816bf</span><span class="p">,</span><span class="mh">0x8f01cfea</span><span class="p">,</span><span class="mh">0x414140de</span><span class="p">,</span><span class="mh">0x5dae2223</span><span class="p">,</span>
+         <span class="mh">0xb00361a3</span><span class="p">,</span><span class="mh">0x96177a9c</span><span class="p">,</span><span class="mh">0xb410ff61</span><span class="p">,</span><span class="mh">0xf20015ad</span><span class="p">);</span>
+ 
+  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;cuda: %08x %08x %08x %08x %08x %08x %08x %08x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+         <span class="n">hash</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">hash</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">hash</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">hash</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">hash</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span><span class="n">hash</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">hash</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="n">hash</span><span class="p">[</span><span class="mi">7</span><span class="p">]);</span>
+ 
+  <span class="c1">//</span>
+  <span class="c1">//</span>
+  <span class="c1">//</span>
+ 
+  <span class="n">cudaFree</span><span class="p">(</span><span class="n">d_hash</span><span class="p">);</span>
+ 
+  <span class="n">cudaDeviceReset</span><span class="p">();</span>
+ 
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+ 
+<span class="c1">//</span>
+<span class="c1">//</span>
+<span class="c1">//</span>
+ 
+<span class="cp">#endif</span>
+</pre></div>
+</td></tr></table>
+   <div class="page-links">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://kylelk.github.io/kylekersey/code/sha256.cu.html">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>   
+   </div>
+    <pre>
+The MIT License (MIT)
+
+Copyright (c) 2014 kyle kersey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+    </pre>
+</div>
+</body>
+</html>

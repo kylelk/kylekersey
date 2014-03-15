@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>wav.c</title>
+<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+<link href="/css/index.css" rel="stylesheet">
+<script src="/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<style>
+    .source .hll { background-color: #ffffcc }
+.source  { background: #f8f8f8; }
+.source .c { color: #408080; font-style: italic } /* Comment */
+.source .err { border: 1px solid #FF0000 } /* Error */
+.source .k { color: #008000; font-weight: bold } /* Keyword */
+.source .o { color: #666666 } /* Operator */
+.source .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.source .cp { color: #BC7A00 } /* Comment.Preproc */
+.source .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.source .cs { color: #408080; font-style: italic } /* Comment.Special */
+.source .gd { color: #A00000 } /* Generic.Deleted */
+.source .ge { font-style: italic } /* Generic.Emph */
+.source .gr { color: #FF0000 } /* Generic.Error */
+.source .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.source .gi { color: #00A000 } /* Generic.Inserted */
+.source .go { color: #888888 } /* Generic.Output */
+.source .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.source .gs { font-weight: bold } /* Generic.Strong */
+.source .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.source .gt { color: #0044DD } /* Generic.Traceback */
+.source .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.source .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.source .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.source .kp { color: #008000 } /* Keyword.Pseudo */
+.source .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.source .kt { color: #B00040 } /* Keyword.Type */
+.source .m { color: #666666 } /* Literal.Number */
+.source .s { color: #BA2121 } /* Literal.String */
+.source .na { color: #7D9029 } /* Name.Attribute */
+.source .nb { color: #008000 } /* Name.Builtin */
+.source .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.source .no { color: #880000 } /* Name.Constant */
+.source .nd { color: #AA22FF } /* Name.Decorator */
+.source .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.source .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.source .nf { color: #0000FF } /* Name.Function */
+.source .nl { color: #A0A000 } /* Name.Label */
+.source .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.source .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.source .nv { color: #19177C } /* Name.Variable */
+.source .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.source .w { color: #bbbbbb } /* Text.Whitespace */
+.source .mf { color: #666666 } /* Literal.Number.Float */
+.source .mh { color: #666666 } /* Literal.Number.Hex */
+.source .mi { color: #666666 } /* Literal.Number.Integer */
+.source .mo { color: #666666 } /* Literal.Number.Oct */
+.source .sb { color: #BA2121 } /* Literal.String.Backtick */
+.source .sc { color: #BA2121 } /* Literal.String.Char */
+.source .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.source .s2 { color: #BA2121 } /* Literal.String.Double */
+.source .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.source .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.source .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.source .sx { color: #008000 } /* Literal.String.Other */
+.source .sr { color: #BB6688 } /* Literal.String.Regex */
+.source .s1 { color: #BA2121 } /* Literal.String.Single */
+.source .ss { color: #19177C } /* Literal.String.Symbol */
+.source .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.source .vc { color: #19177C } /* Name.Variable.Class */
+.source .vg { color: #19177C } /* Name.Variable.Global */
+.source .vi { color: #19177C } /* Name.Variable.Instance */
+.source .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48664735-1', 'kylelk.github.io');
+    ga('send', 'pageview');
+
+    </script>
+	</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">Kyle Kersey</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li><a href="code/">Code</a></li>
+         <li><a href="about/">About</a></li>
+          <li><a href="contact/">Contact</a></li>
+          <li><a href="work/">Work</a></li>
+          <li><a href="">Site Map</a></li>
+      </ul>
+   </div>
+</nav>
+<div class="main-area">
+    <b><a id="raw_link" href="/code/raw/wav.c">View Raw</a></b>
+    <br>    
+    <table class="sourcetable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273</pre></div></td><td class="code"><div class="source"><pre><span class="c1">////#include &lt;stdio.h&gt;</span>
+<span class="c1">////#include &lt;stdlib.h&gt;</span>
+<span class="c1">////#include &lt;string.h&gt; // for memcmp</span>
+<span class="c1">////#include &lt;stdint.h&gt; // for int16_t and int32_t</span>
+<span class="c1">////</span>
+<span class="c1">////struct wavfile</span>
+<span class="c1">////{</span>
+<span class="c1">////    char    id[4];          // should always contain &quot;RIFF&quot;</span>
+<span class="c1">////    int32_t totallength;    // total file length minus 8</span>
+<span class="c1">////    char    wavefmt[8];     // should be &quot;WAVEfmt &quot;</span>
+<span class="c1">////    int32_t format;         // 16 for PCM format</span>
+<span class="c1">////    int16_t pcm;            // 1 for PCM format</span>
+<span class="c1">////    int16_t channels;       // channels</span>
+<span class="c1">////    int32_t frequency;      // sampling frequency</span>
+<span class="c1">////    int32_t bytes_per_second;</span>
+<span class="c1">////    int16_t bytes_by_capture;</span>
+<span class="c1">////    int16_t bits_per_sample;</span>
+<span class="c1">////    char    data[4];        // should always contain &quot;data&quot;</span>
+<span class="c1">////    int32_t bytes_in_data;</span>
+<span class="c1">////} __attribute__((__packed__));</span>
+<span class="c1">////</span>
+<span class="c1">////int is_big_endian(void) {</span>
+<span class="c1">////    union {</span>
+<span class="c1">////        uint32_t i;</span>
+<span class="c1">////        char c[4];</span>
+<span class="c1">////    } bint = {0x01000000};</span>
+<span class="c1">////    return bint.c[0]==1;</span>
+<span class="c1">////}</span>
+<span class="c1">////</span>
+<span class="c1">////int main(int argc, char *argv[]) {</span>
+<span class="c1">////    char *filename=argv[1];</span>
+<span class="c1">////    FILE *wav = fopen(filename,&quot;rb&quot;);</span>
+<span class="c1">////    struct wavfile header;</span>
+<span class="c1">////    </span>
+<span class="c1">////    if ( wav == NULL ) {</span>
+<span class="c1">////        fprintf(stderr,&quot;Can&#39;t open input file %s\n&quot;, filename);</span>
+<span class="c1">////        exit(1);</span>
+<span class="c1">////    }</span>
+<span class="c1">////    </span>
+<span class="c1">////    // read header</span>
+<span class="c1">////    if ( fread(&amp;header,sizeof(header),1,wav) &lt; 1 ) {</span>
+<span class="c1">////        fprintf(stderr,&quot;Can&#39;t read input file header %s\n&quot;, filename);</span>
+<span class="c1">////        exit(1);</span>
+<span class="c1">////    }</span>
+<span class="c1">////    </span>
+<span class="c1">////    // if wav file isn&#39;t the same endianness than the current environment</span>
+<span class="c1">////    // we quit</span>
+<span class="c1">////    if ( is_big_endian() ) {</span>
+<span class="c1">////        if (   memcmp( header.id,&quot;RIFX&quot;, 4) != 0 ) {</span>
+<span class="c1">////            fprintf(stderr,&quot;ERROR: %s is not a big endian wav file\n&quot;, filename);</span>
+<span class="c1">////            exit(1);</span>
+<span class="c1">////        }</span>
+<span class="c1">////    } else {</span>
+<span class="c1">////        if (   memcmp( header.id,&quot;RIFF&quot;, 4) != 0 ) {</span>
+<span class="c1">////            fprintf(stderr,&quot;ERROR: %s is not a little endian wav file\n&quot;, filename);</span>
+<span class="c1">////            exit(1);</span>
+<span class="c1">////        }</span>
+<span class="c1">////    }</span>
+<span class="c1">////    </span>
+<span class="c1">////    if (   memcmp( header.wavefmt, &quot;WAVEfmt &quot;, 8) != 0</span>
+<span class="c1">////        || memcmp( header.data, &quot;data&quot;, 4) != 0</span>
+<span class="c1">////        ) {</span>
+<span class="c1">////        fprintf(stderr,&quot;ERROR: Not wav format\n&quot;);</span>
+<span class="c1">////        exit(1);</span>
+<span class="c1">////    }</span>
+<span class="c1">////    if (header.format != 16) {</span>
+<span class="c1">////        fprintf(stderr,&quot;\nERROR: not 16 bit wav format.&quot;);</span>
+<span class="c1">////        exit(1);</span>
+<span class="c1">////    }</span>
+<span class="c1">////    fprintf(stderr,&quot;format: %d bits&quot;, header.format);</span>
+<span class="c1">////    if (header.format == 16) {</span>
+<span class="c1">////        fprintf(stderr,&quot;, PCM&quot;);</span>
+<span class="c1">////    } else {</span>
+<span class="c1">////        fprintf(stderr,&quot;, not PCM (%d)&quot;, header.format);</span>
+<span class="c1">////    }</span>
+<span class="c1">////    if (header.pcm == 1) {</span>
+<span class="c1">////        fprintf(stderr, &quot; uncompressed&quot; );</span>
+<span class="c1">////    } else {</span>
+<span class="c1">////        fprintf(stderr, &quot; compressed&quot; );</span>
+<span class="c1">////    }</span>
+<span class="c1">////    fprintf(stderr,&quot;, channel %d&quot;, header.pcm);</span>
+<span class="c1">////    fprintf(stderr,&quot;, freq %d&quot;, header.frequency );</span>
+<span class="c1">////    fprintf(stderr,&quot;, %d bytes per sec&quot;, header.bytes_per_second );</span>
+<span class="c1">////    fprintf(stderr,&quot;, %d bytes by capture&quot;, header.bytes_by_capture );</span>
+<span class="c1">////    fprintf(stderr,&quot;, %d bits per sample&quot;, header.bytes_by_capture );</span>
+<span class="c1">////    fprintf(stderr,&quot;\n&quot; );</span>
+<span class="c1">////    </span>
+<span class="c1">////    if ( memcmp( header.data, &quot;data&quot;, 4) != 0 ) {</span>
+<span class="c1">////        fprintf(stderr,&quot;ERROR: Prrroblem?\n&quot;);</span>
+<span class="c1">////        exit(1);</span>
+<span class="c1">////    }</span>
+<span class="c1">////    fprintf(stderr,&quot;wav format\n&quot;);</span>
+<span class="c1">////    </span>
+<span class="c1">////    // read data</span>
+<span class="c1">////    long long sum=0;</span>
+<span class="c1">////    int16_t value;</span>
+<span class="c1">////    int i=0;</span>
+<span class="c1">////    fprintf(stderr,&quot;---\n&quot;, value);</span>
+<span class="c1">////    while( fread(&amp;value,sizeof(value),1,wav) ) {</span>
+<span class="c1">////        if (value&lt;0) { value=-value; }</span>
+<span class="c1">////        sum += value;</span>
+<span class="c1">////    }</span>
+<span class="c1">////    printf(&quot;%lld\n&quot;,sum);</span>
+<span class="c1">////    exit(0);</span>
+<span class="c1">////}</span>
+<span class="c1">//#include &lt;stdio.h&gt;</span>
+<span class="c1">//#include &lt;stdlib.h&gt;</span>
+<span class="c1">//#include &lt;stdint.h&gt;</span>
+<span class="c1">//</span>
+<span class="c1">//struct wavfile</span>
+<span class="c1">//{</span>
+<span class="c1">//    char        id[4];          // should always contain &quot;RIFF&quot;</span>
+<span class="c1">//    int     totallength;    // total file length minus 8</span>
+<span class="c1">//    char        wavefmt[8];     // should be &quot;WAVEfmt &quot;</span>
+<span class="c1">//    int     format;         // 16 for PCM format</span>
+<span class="c1">//    short     pcm;            // 1 for PCM format</span>
+<span class="c1">//    short     channels;       // channels</span>
+<span class="c1">//    int     frequency;      // sampling frequency</span>
+<span class="c1">//    int     bytes_per_second;</span>
+<span class="c1">//    short     bytes_by_capture;</span>
+<span class="c1">//    short     bits_per_sample;</span>
+<span class="c1">//    char        data[4];        // should always contain &quot;data&quot;</span>
+<span class="c1">//    int     bytes_in_data;</span>
+<span class="c1">//};</span>
+<span class="c1">//</span>
+<span class="c1">//int main(int argc, char *argv[]) {</span>
+<span class="c1">//    char *filename=argv[1];</span>
+<span class="c1">//    FILE *wav = fopen(filename,&quot;rb&quot;);</span>
+<span class="c1">//    struct wavfile header;</span>
+<span class="c1">//    </span>
+<span class="c1">//    if ( wav == NULL ) {</span>
+<span class="c1">//        fprintf(stderr,&quot;Can&#39;t open input file %s\n&quot;, filename);</span>
+<span class="c1">//        exit(1);</span>
+<span class="c1">//    }</span>
+<span class="c1">//    </span>
+<span class="c1">//    // read header</span>
+<span class="c1">//    if ( fread(&amp;header,sizeof(header),1,wav) &lt; 1 )</span>
+<span class="c1">//    {</span>
+<span class="c1">//        fprintf(stderr,&quot;Can&#39;t read file header\n&quot;);</span>
+<span class="c1">//        exit(1);</span>
+<span class="c1">//    }</span>
+<span class="c1">//    if (    header.id[0] != &#39;R&#39;</span>
+<span class="c1">//        || header.id[1] != &#39;I&#39;</span>
+<span class="c1">//        || header.id[2] != &#39;F&#39;</span>
+<span class="c1">//        || header.id[3] != &#39;F&#39; ) {</span>
+<span class="c1">//        fprintf(stderr,&quot;ERROR: Not wav format\n&quot;);</span>
+<span class="c1">//        exit(1);</span>
+<span class="c1">//    }</span>
+<span class="c1">//    </span>
+<span class="c1">//    fprintf(stderr,&quot;wav format\n&quot;);</span>
+<span class="c1">//    </span>
+<span class="c1">//    // read data</span>
+<span class="c1">//    long sum=0;</span>
+<span class="c1">//    short value=0;</span>
+<span class="c1">//    while( fread(&amp;value,sizeof(value),1,wav) ) {</span>
+<span class="c1">//        // fprintf(stderr,&quot;%d\n&quot;, value);</span>
+<span class="c1">//        if (value&lt;0) { value=-value; }</span>
+<span class="c1">//        sum += value;</span>
+<span class="c1">//    }</span>
+<span class="c1">//    printf(&quot;%ld\n&quot;,sum);</span>
+<span class="c1">//    exit(0);</span>
+<span class="c1">//}</span>
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;string.h&gt;</span>
+<span class="cp">#include &lt;math.h&gt;</span>
+
+<span class="cm">/* M_PI is declared in math.h */</span>
+<span class="cp">#define PI M_PI</span>
+
+
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span>	<span class="n">UI</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">int</span>	<span class="n">UL</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">short</span> <span class="kt">int</span>	<span class="n">US</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span>	<span class="n">UC</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">int</span>		<span class="n">SI</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">long</span> <span class="kt">int</span>	<span class="n">SL</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">short</span> <span class="kt">int</span>	<span class="n">SS</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">signed</span> <span class="kt">char</span>	<span class="n">SC</span><span class="p">;</span>
+
+
+<span class="cp">#define attr(a) __attribute__((a))</span>
+
+<span class="cp">#define packed attr(packed)</span>
+
+<span class="cm">/* WAV header, 44-byte total */</span>
+<span class="k">typedef</span> <span class="k">struct</span><span class="p">{</span>
+    <span class="n">UL</span> <span class="n">riff</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">len</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">wave</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">fmt</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">flen</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">US</span> <span class="n">one</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">US</span> <span class="n">chan</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">hz</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">bpsec</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">US</span> <span class="n">bpsmp</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">US</span> <span class="n">bitpsmp</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">dat</span>	<span class="n">packed</span><span class="p">;</span>
+    <span class="n">UL</span> <span class="n">dlen</span>	<span class="n">packed</span><span class="p">;</span>
+<span class="p">}</span><span class="n">WAVHDR</span><span class="p">;</span>
+
+
+
+<span class="kt">int</span> <span class="nf">savefile</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span><span class="k">const</span> <span class="n">s</span><span class="p">,</span><span class="k">const</span> <span class="kt">void</span><span class="o">*</span><span class="k">const</span> <span class="n">m</span><span class="p">,</span><span class="k">const</span> <span class="kt">int</span> <span class="n">ml</span><span class="p">){</span>
+    <span class="kt">FILE</span><span class="o">*</span><span class="n">f</span><span class="o">=</span><span class="n">fopen</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;wb&quot;</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">ok</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">f</span><span class="p">){</span>
+        <span class="n">ok</span><span class="o">=</span><span class="n">fwrite</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">ml</span><span class="p">,</span><span class="n">f</span><span class="p">)</span><span class="o">==</span><span class="n">ml</span><span class="p">;</span>
+        <span class="n">fclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ok</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="cm">/* &quot;converts&quot; 4-char string to long int */</span>
+<span class="cp">#define dw(a) (*(UL*)(a))</span>
+
+
+<span class="cm">/* Makes 44-byte header for 8-bit WAV in memory</span>
+<span class="cm"> usage: wavhdr(pointer,sampleRate,dataLength) */</span>
+
+<span class="kt">void</span> <span class="nf">wavhdr</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="n">UL</span> <span class="n">hz</span><span class="p">,</span><span class="n">UL</span> <span class="n">dlen</span><span class="p">){</span>
+    <span class="n">WAVHDR</span><span class="o">*</span><span class="n">p</span><span class="o">=</span><span class="n">m</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">riff</span><span class="o">=</span><span class="n">dw</span><span class="p">(</span><span class="s">&quot;RIFF&quot;</span><span class="p">);</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">len</span><span class="o">=</span><span class="n">dlen</span><span class="o">+</span><span class="mi">44</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">wave</span><span class="o">=</span><span class="n">dw</span><span class="p">(</span><span class="s">&quot;WAVE&quot;</span><span class="p">);</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">fmt</span><span class="o">=</span><span class="n">dw</span><span class="p">(</span><span class="s">&quot;fmt &quot;</span><span class="p">);</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">flen</span><span class="o">=</span><span class="mh">0x10</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">one</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">chan</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">hz</span><span class="o">=</span><span class="n">hz</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">bpsec</span><span class="o">=</span><span class="n">hz</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">bpsmp</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">bitpsmp</span><span class="o">=</span><span class="mi">8</span><span class="p">;</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">dat</span><span class="o">=</span><span class="n">dw</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">);</span>
+    <span class="n">p</span><span class="o">-&gt;</span><span class="n">dlen</span><span class="o">=</span><span class="n">dlen</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="cm">/* returns 8-bit sample for a sine wave */</span>
+<span class="n">UC</span> <span class="nf">sinewave</span><span class="p">(</span><span class="n">UL</span> <span class="n">rate</span><span class="p">,</span><span class="kt">float</span> <span class="n">freq</span><span class="p">,</span><span class="n">UC</span> <span class="n">amp</span><span class="p">,</span><span class="n">UL</span> <span class="n">z</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">sin</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="p">((</span><span class="n">PI</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="n">rate</span><span class="p">)</span><span class="o">*</span><span class="n">freq</span><span class="p">))</span><span class="o">*</span><span class="n">amp</span><span class="o">+</span><span class="mi">128</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="cm">/* make arbitrary audio data here */</span>
+<span class="kt">void</span> <span class="nf">makeaud</span><span class="p">(</span><span class="n">UC</span><span class="o">*</span><span class="n">p</span><span class="p">,</span><span class="k">const</span> <span class="n">UL</span> <span class="n">rate</span><span class="p">,</span><span class="n">UL</span> <span class="n">z</span><span class="p">){</span>
+    <span class="kt">float</span> <span class="n">freq</span><span class="o">=</span><span class="mi">500</span><span class="p">;</span>
+    <span class="n">UC</span> <span class="n">amp</span><span class="o">=</span><span class="mi">120</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">z</span><span class="o">--</span><span class="p">){</span>
+        <span class="o">*</span><span class="n">p</span><span class="o">++=</span><span class="n">sinewave</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="n">amp</span><span class="p">,</span><span class="n">z</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="cm">/* makes wav file */</span>
+<span class="kt">void</span> <span class="nf">makewav</span><span class="p">(</span><span class="k">const</span> <span class="n">UL</span> <span class="n">rate</span><span class="p">,</span><span class="k">const</span> <span class="n">UL</span> <span class="n">dlen</span><span class="p">){</span>
+    <span class="k">const</span> <span class="n">UL</span> <span class="n">mlen</span><span class="o">=</span><span class="n">dlen</span><span class="o">+</span><span class="mi">44</span><span class="p">;</span>
+    <span class="n">UC</span><span class="o">*</span><span class="k">const</span> <span class="n">m</span><span class="o">=</span><span class="n">malloc</span><span class="p">(</span><span class="n">mlen</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">m</span><span class="p">){</span>
+        <span class="n">wavhdr</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">rate</span><span class="p">,</span><span class="n">dlen</span><span class="p">);</span>
+        <span class="n">makeaud</span><span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="mi">44</span><span class="p">,</span><span class="n">rate</span><span class="p">,</span><span class="n">dlen</span><span class="p">);</span>
+        <span class="n">savefile</span><span class="p">(</span><span class="s">&quot;out.wav&quot;</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">mlen</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+    <span class="k">if</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">WAVHDR</span><span class="p">)</span><span class="o">!=</span><span class="mi">44</span><span class="p">)</span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;bad struct&quot;</span><span class="p">);</span>
+    <span class="n">makewav</span><span class="p">(</span><span class="mi">22050</span><span class="p">,</span><span class="mi">64000</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+   <div class="page-links">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://kylelk.github.io/kylekersey/code/wav.c.html">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>   
+   </div>
+    <pre>
+The MIT License (MIT)
+
+Copyright (c) 2014 kyle kersey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+    </pre>
+</div>
+</body>
+</html>
