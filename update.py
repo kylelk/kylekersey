@@ -38,7 +38,7 @@ for cdate, path in sorted(entries):
         formatter = HtmlFormatter(linenos=True, cssclass="source", encoding="utf-8")
         
         template_data["title"] = os.path.basename(path)
-        template_data["raw_link"] = "/"+settings["raw_code_dir"] + os.path.basename(path)
+        template_data["raw_link"] = "raw/" + os.path.basename(path)
         template_data["code_style"] = formatter.get_style_defs(".source")
         template_data["html_code"] = highlight(code, lexer, formatter)
         template_data["page_url"] = settings["website_url"] + settings["highlighted_code_dir"] + os.path.basename(path)+".html"
