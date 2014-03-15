@@ -1,30 +1,15 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
- <meta name="Author" content="Made by 'tree'">
- <meta name="GENERATOR" content="$Version: $ tree v1.6.0 (c) 1996 - 2011 by Steve Baker, Thomas Moore, Francesc Rocher, Kyosuke Tokoro $">
- <title>site map</title>
- <style type="text/css">
-  <!-- 
-  BODY { font-family : ariel, monospace, sans-serif; }
-  P { font-weight: normal; font-family : ariel, monospace, sans-serif; color: black; background-color: transparent;}
-  B { font-weight: normal; color: black; background-color: transparent;}
-  A:visited { font-weight : normal; text-decoration : none; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-  A:link    { font-weight : normal; text-decoration : none; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-  A:hover   { color : #000000; font-weight : normal; text-decoration : underline; background-color : yellow; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-  A:active  { color : #000000; font-weight: normal; background-color : transparent; margin : 0px 0px 0px 0px; padding : 0px 0px 0px 0px; display: inline; }
-  .VERSION { font-size: small; font-family : arial, sans-serif; }
-  .NORM  { color: black;  background-color: transparent;}
-  .FIFO  { color: purple; background-color: transparent;}
-  .CHAR  { color: yellow; background-color: transparent;}
-  .DIR   { color: blue;   background-color: transparent;}
-  .BLOCK { color: yellow; background-color: transparent;}
-  .LINK  { color: aqua;   background-color: transparent;}
-  .SOCK  { color: fuchsia;background-color: transparent;}
-  .EXEC  { color: green;  background-color: transparent;}
-  -->
- </style>
+<title>{{ title }}</title>
+<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<style>
+    {{ code_style }}
+</style>
 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -38,347 +23,51 @@
     </script>
 	</head>
 <body>
-	<h1>site map</h1><p>
-	<a class="NORM" href=".">.</a><br>
-	|-- [&nbsp;&nbsp;40]&nbsp;&nbsp;<a class="NORM" href="./README.md">README.md</a><br>
-	|-- [&nbsp;&nbsp;68]&nbsp;&nbsp;<a class="DIR" href="./about/">about</a><br>
-	|-- [&nbsp;204]&nbsp;&nbsp;<a class="DIR" href="./bootstrap/">bootstrap</a><br>
-	|   |-- [&nbsp;306]&nbsp;&nbsp;<a class="DIR" href="./bootstrap/css/">css</a><br>
-	|   |   |-- [&nbsp;15K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/css/bootstrap-theme.css">bootstrap-theme.css</a><br>
-	|   |   |-- [&nbsp;37K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/css/bootstrap-theme.css.map">bootstrap-theme.css.map</a><br>
-	|   |   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/css/bootstrap-theme.min.css">bootstrap-theme.min.css</a><br>
-	|   |   |-- [118K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/css/bootstrap.css">bootstrap.css</a><br>
-	|   |   |-- [240K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/css/bootstrap.css.map">bootstrap.css.map</a><br>
-	|   |   `-- [&nbsp;98K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/css/bootstrap.min.css">bootstrap.min.css</a><br>
-	|   |-- [&nbsp;204]&nbsp;&nbsp;<a class="DIR" href="./bootstrap/fonts/">fonts</a><br>
-	|   |   |-- [&nbsp;20K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/fonts/glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</a><br>
-	|   |   |-- [&nbsp;61K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/fonts/glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</a><br>
-	|   |   |-- [&nbsp;40K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/fonts/glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</a><br>
-	|   |   `-- [&nbsp;23K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/fonts/glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</a><br>
-	|   `-- [&nbsp;136]&nbsp;&nbsp;<a class="DIR" href="./bootstrap/js/">js</a><br>
-	|   &nbsp;&nbsp;&nbsp; |-- [&nbsp;54K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/js/bootstrap.js">bootstrap.js</a><br>
-	|   &nbsp;&nbsp;&nbsp; `-- [&nbsp;28K]&nbsp;&nbsp;<a class="NORM" href="./bootstrap/js/bootstrap.min.js">bootstrap.min.js</a><br>
-	|-- [4.6K]&nbsp;&nbsp;<a class="DIR" href="./code/">code</a><br>
-	|   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/AESexample.java.html">AESexample.java.html</a><br>
-	|   |-- [8.1K]&nbsp;&nbsp;<a class="NORM" href="./code/GetInputSwing.java.html">GetInputSwing.java.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/Haversine.c.html">Haversine.c.html</a><br>
-	|   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/Quadratic Equation.c.html">Quadratic Equation.c.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/add.s.html">add.s.html</a><br>
-	|   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/alphabet.json.html">alphabet.json.html</a><br>
-	|   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/alphabet2.json.html">alphabet2.json.html</a><br>
-	|   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/array_add.cu.html">array_add.cu.html</a><br>
-	|   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/arrow_test.c.html">arrow_test.c.html</a><br>
-	|   |-- [9.5K]&nbsp;&nbsp;<a class="NORM" href="./code/big_mull.c.html">big_mull.c.html</a><br>
-	|   |-- [7.7K]&nbsp;&nbsp;<a class="NORM" href="./code/bmp_convert.py.html">bmp_convert.py.html</a><br>
-	|   |-- [&nbsp;56K]&nbsp;&nbsp;<a class="NORM" href="./code/bmpedit.c.html">bmpedit.c.html</a><br>
-	|   |-- [&nbsp;204]&nbsp;&nbsp;<a class="DIR" href="./code/bootstrap/">bootstrap</a><br>
-	|   |   |-- [&nbsp;306]&nbsp;&nbsp;<a class="DIR" href="./code/bootstrap/css/">css</a><br>
-	|   |   |   |-- [&nbsp;15K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/css/bootstrap-theme.css">bootstrap-theme.css</a><br>
-	|   |   |   |-- [&nbsp;37K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/css/bootstrap-theme.css.map">bootstrap-theme.css.map</a><br>
-	|   |   |   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/css/bootstrap-theme.min.css">bootstrap-theme.min.css</a><br>
-	|   |   |   |-- [118K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/css/bootstrap.css">bootstrap.css</a><br>
-	|   |   |   |-- [240K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/css/bootstrap.css.map">bootstrap.css.map</a><br>
-	|   |   |   `-- [&nbsp;98K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/css/bootstrap.min.css">bootstrap.min.css</a><br>
-	|   |   |-- [&nbsp;204]&nbsp;&nbsp;<a class="DIR" href="./code/bootstrap/fonts/">fonts</a><br>
-	|   |   |   |-- [&nbsp;20K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/fonts/glyphicons-halflings-regular.eot">glyphicons-halflings-regular.eot</a><br>
-	|   |   |   |-- [&nbsp;61K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/fonts/glyphicons-halflings-regular.svg">glyphicons-halflings-regular.svg</a><br>
-	|   |   |   |-- [&nbsp;40K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/fonts/glyphicons-halflings-regular.ttf">glyphicons-halflings-regular.ttf</a><br>
-	|   |   |   `-- [&nbsp;23K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/fonts/glyphicons-halflings-regular.woff">glyphicons-halflings-regular.woff</a><br>
-	|   |   `-- [&nbsp;136]&nbsp;&nbsp;<a class="DIR" href="./code/bootstrap/js/">js</a><br>
-	|   |   &nbsp;&nbsp;&nbsp; |-- [&nbsp;54K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/js/bootstrap.js">bootstrap.js</a><br>
-	|   |   &nbsp;&nbsp;&nbsp; `-- [&nbsp;28K]&nbsp;&nbsp;<a class="NORM" href="./code/bootstrap/js/bootstrap.min.js">bootstrap.min.js</a><br>
-	|   |-- [9.3K]&nbsp;&nbsp;<a class="NORM" href="./code/box.c.html">box.c.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/calc_primes.c.html">calc_primes.c.html</a><br>
-	|   |-- [&nbsp;29K]&nbsp;&nbsp;<a class="NORM" href="./code/calc_primes.s.html">calc_primes.s.html</a><br>
-	|   |-- [9.1K]&nbsp;&nbsp;<a class="NORM" href="./code/clock.c.html">clock.c.html</a><br>
-	|   |-- [8.5K]&nbsp;&nbsp;<a class="NORM" href="./code/color_test.c.html">color_test.c.html</a><br>
-	|   |-- [8.4K]&nbsp;&nbsp;<a class="NORM" href="./code/colors.c.html">colors.c.html</a><br>
-	|   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/crc32.c.html">crc32.c.html</a><br>
-	|   |-- [&nbsp;170]&nbsp;&nbsp;<a class="DIR" href="./code/css/">css</a><br>
-	|   |   |-- [&nbsp;&nbsp;30]&nbsp;&nbsp;<a class="NORM" href="./code/css/code_links.css">code_links.css</a><br>
-	|   |   `-- [&nbsp;&nbsp;33]&nbsp;&nbsp;<a class="NORM" href="./code/css/index.css">index.css</a><br>
-	|   |-- [&nbsp;19K]&nbsp;&nbsp;<a class="NORM" href="./code/curses_menu.py.html">curses_menu.py.html</a><br>
-	|   |-- [8.8K]&nbsp;&nbsp;<a class="NORM" href="./code/divisors copy.py.html">divisors copy.py.html</a><br>
-	|   |-- [&nbsp;71K]&nbsp;&nbsp;<a class="NORM" href="./code/eratosthenes.cu.html">eratosthenes.cu.html</a><br>
-	|   |-- [&nbsp;28K]&nbsp;&nbsp;<a class="NORM" href="./code/eratosthenes_kernel.cu.html">eratosthenes_kernel.cu.html</a><br>
-	|   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/fact.c.html">fact.c.html</a><br>
-	|   |-- [7.3K]&nbsp;&nbsp;<a class="NORM" href="./code/fact.s.html">fact.s.html</a><br>
-	|   |-- [8.8K]&nbsp;&nbsp;<a class="NORM" href="./code/factorial.c.html">factorial.c.html</a><br>
-	|   |-- [7.4K]&nbsp;&nbsp;<a class="NORM" href="./code/factorial.s.html">factorial.s.html</a><br>
-	|   |-- [&nbsp;25K]&nbsp;&nbsp;<a class="NORM" href="./code/factorial_gpu.cu.html">factorial_gpu.cu.html</a><br>
-	|   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/file_list.c.html">file_list.c.html</a><br>
-	|   |-- [&nbsp;30K]&nbsp;&nbsp;<a class="NORM" href="./code/freq.c.html">freq.c.html</a><br>
-	|   |-- [&nbsp;26K]&nbsp;&nbsp;<a class="NORM" href="./code/frq.c.html">frq.c.html</a><br>
-	|   |-- [&nbsp;17K]&nbsp;&nbsp;<a class="NORM" href="./code/get_http.c.html">get_http.c.html</a><br>
-	|   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/gethost.c.html">gethost.c.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/gethostbyname.c.html">gethostbyname.c.html</a><br>
-	|   |-- [8.0K]&nbsp;&nbsp;<a class="NORM" href="./code/golden.c.html">golden.c.html</a><br>
-	|   |-- [9.8K]&nbsp;&nbsp;<a class="NORM" href="./code/grid.c.html">grid.c.html</a><br>
-	|   |-- [9.7K]&nbsp;&nbsp;<a class="NORM" href="./code/hello copy.s.html">hello copy.s.html</a><br>
-	|   |-- [&nbsp;15K]&nbsp;&nbsp;<a class="NORM" href="./code/hello-world-server.c.html">hello-world-server.c.html</a><br>
-	|   |-- [&nbsp;39K]&nbsp;&nbsp;<a class="NORM" href="./code/hello-x.c.html">hello-x.c.html</a><br>
-	|   |-- [7.2K]&nbsp;&nbsp;<a class="NORM" href="./code/hello.c.html">hello.c.html</a><br>
-	|   |-- [9.7K]&nbsp;&nbsp;<a class="NORM" href="./code/hello.s.html">hello.s.html</a><br>
-	|   |-- [9.3K]&nbsp;&nbsp;<a class="NORM" href="./code/hello2.s.html">hello2.s.html</a><br>
-	|   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/hello_world.cu.html">hello_world.cu.html</a><br>
-	|   |-- [9.7K]&nbsp;&nbsp;<a class="NORM" href="./code/helloworld.s.html">helloworld.s.html</a><br>
-	|   |-- [&nbsp;28K]&nbsp;&nbsp;<a class="NORM" href="./code/hexdump.c.html">hexdump.c.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/hostname.c.html">hostname.c.html</a><br>
-	|   |-- [&nbsp;29K]&nbsp;&nbsp;<a class="NORM" href="./code/http_example.c.html">http_example.c.html</a><br>
-	|   |-- [&nbsp;21K]&nbsp;&nbsp;<a class="NORM" href="./code/http_get.c.html">http_get.c.html</a><br>
-	|   |-- [&nbsp;26K]&nbsp;&nbsp;<a class="NORM" href="./code/huffman.c.html">huffman.c.html</a><br>
-	|   |-- [&nbsp;29K]&nbsp;&nbsp;<a class="NORM" href="./code/index.html">index.html</a><br>
-	|   |-- [9.4K]&nbsp;&nbsp;<a class="NORM" href="./code/input_test.c.html">input_test.c.html</a><br>
-	|   |-- [&nbsp;14K]&nbsp;&nbsp;<a class="NORM" href="./code/isprime.c.html">isprime.c.html</a><br>
-	|   |-- [&nbsp;136]&nbsp;&nbsp;<a class="DIR" href="./code/js/">js</a><br>
-	|   |   `-- [&nbsp;91K]&nbsp;&nbsp;<a class="EXEC" href="./code/js/jquery.min.js">jquery.min.js</a><br>
-	|   |-- [9.7K]&nbsp;&nbsp;<a class="NORM" href="./code/keygen.java.html">keygen.java.html</a><br>
-	|   |-- [&nbsp;31K]&nbsp;&nbsp;<a class="NORM" href="./code/md5.c.html">md5.c.html</a><br>
-	|   |-- [&nbsp;&nbsp;&nbsp;0]&nbsp;&nbsp;<a class="NORM" href="./code/md5_test.c.html">md5_test.c.html</a><br>
-	|   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/menu_test.c.html">menu_test.c.html</a><br>
-	|   |-- [&nbsp;59K]&nbsp;&nbsp;<a class="NORM" href="./code/morsewav.c.html">morsewav.c.html</a><br>
-	|   |-- [&nbsp;25K]&nbsp;&nbsp;<a class="NORM" href="./code/move_box.c.html">move_box.c.html</a><br>
-	|   |-- [&nbsp;15K]&nbsp;&nbsp;<a class="NORM" href="./code/mul_array_items.cu.html">mul_array_items.cu.html</a><br>
-	|   |-- [&nbsp;71K]&nbsp;&nbsp;<a class="NORM" href="./code/multiline-text-editor 2.c.html">multiline-text-editor 2.c.html</a><br>
-	|   |-- [&nbsp;71K]&nbsp;&nbsp;<a class="NORM" href="./code/multiline-text-editor.c.html">multiline-text-editor.c.html</a><br>
-	|   |-- [&nbsp;16K]&nbsp;&nbsp;<a class="NORM" href="./code/multiply.c.html">multiply.c.html</a><br>
-	|   |-- [&nbsp;22K]&nbsp;&nbsp;<a class="NORM" href="./code/nccolour.c.html">nccolour.c.html</a><br>
-	|   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/ncurses_colors.c.html">ncurses_colors.c.html</a><br>
-	|   |-- [&nbsp;17K]&nbsp;&nbsp;<a class="NORM" href="./code/ncurses_example.c.html">ncurses_example.c.html</a><br>
-	|   |-- [9.5K]&nbsp;&nbsp;<a class="NORM" href="./code/number_table.c.html">number_table.c.html</a><br>
-	|   |-- [8.5K]&nbsp;&nbsp;<a class="NORM" href="./code/out.s.html">out.s.html</a><br>
-	|   |-- [&nbsp;23K]&nbsp;&nbsp;<a class="NORM" href="./code/perms.cu.html">perms.cu.html</a><br>
-	|   |-- [&nbsp;23K]&nbsp;&nbsp;<a class="NORM" href="./code/permuations.c.html">permuations.c.html</a><br>
-	|   |-- [&nbsp;44K]&nbsp;&nbsp;<a class="NORM" href="./code/poission.cu.html">poission.cu.html</a><br>
-	|   |-- [8.6K]&nbsp;&nbsp;<a class="NORM" href="./code/power.c.html">power.c.html</a><br>
-	|   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/prime_list.c.html">prime_list.c.html</a><br>
-	|   |-- [&nbsp;26K]&nbsp;&nbsp;<a class="NORM" href="./code/prime_number.cu.html">prime_number.cu.html</a><br>
-	|   |-- [&nbsp;18K]&nbsp;&nbsp;<a class="NORM" href="./code/primes.c.html">primes.c.html</a><br>
-	|   |-- [&nbsp;23K]&nbsp;&nbsp;<a class="NORM" href="./code/primes.cu.html">primes.cu.html</a><br>
-	|   |-- [9.2K]&nbsp;&nbsp;<a class="NORM" href="./code/primes2.c.html">primes2.c.html</a><br>
-	|   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/quad.c.html">quad.c.html</a><br>
-	|   |-- [9.0K]&nbsp;&nbsp;<a class="NORM" href="./code/random.c.html">random.c.html</a><br>
-	|   |-- [4.7K]&nbsp;&nbsp;<a class="DIR" href="./code/raw/">raw</a><br>
-	|   |   |-- [1.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/AESexample.java">AESexample.java</a><br>
-	|   |   |-- [386K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/GPU_POTENTIAL.dat">GPU_POTENTIAL.dat</a><br>
-	|   |   |-- [&nbsp;300]&nbsp;&nbsp;<a class="NORM" href="./code/raw/GetInputSwing.java">GetInputSwing.java</a><br>
-	|   |   |-- [&nbsp;582]&nbsp;&nbsp;<a class="NORM" href="./code/raw/Haversine.c">Haversine.c</a><br>
-	|   |   |-- [&nbsp;816]&nbsp;&nbsp;<a class="NORM" href="./code/raw/Quadratic Equation.c">Quadratic Equation.c</a><br>
-	|   |   |-- [1.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/add.s">add.s</a><br>
-	|   |   |-- [&nbsp;633]&nbsp;&nbsp;<a class="NORM" href="./code/raw/alphabet.json">alphabet.json</a><br>
-	|   |   |-- [&nbsp;633]&nbsp;&nbsp;<a class="NORM" href="./code/raw/alphabet2.json">alphabet2.json</a><br>
-	|   |   |-- [&nbsp;830]&nbsp;&nbsp;<a class="NORM" href="./code/raw/array_add.cu">array_add.cu</a><br>
-	|   |   |-- [&nbsp;563]&nbsp;&nbsp;<a class="NORM" href="./code/raw/arrow_test.c">arrow_test.c</a><br>
-	|   |   |-- [&nbsp;532]&nbsp;&nbsp;<a class="NORM" href="./code/raw/big_mull.c">big_mull.c</a><br>
-	|   |   |-- [&nbsp;139]&nbsp;&nbsp;<a class="NORM" href="./code/raw/bmp_convert.py">bmp_convert.py</a><br>
-	|   |   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/bmpedit.c">bmpedit.c</a><br>
-	|   |   |-- [&nbsp;666]&nbsp;&nbsp;<a class="NORM" href="./code/raw/bmpedit.h">bmpedit.h</a><br>
-	|   |   |-- [&nbsp;580]&nbsp;&nbsp;<a class="NORM" href="./code/raw/box.c">box.c</a><br>
-	|   |   |-- [&nbsp;485]&nbsp;&nbsp;<a class="NORM" href="./code/raw/calc_primes.c">calc_primes.c</a><br>
-	|   |   |-- [3.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/calc_primes.s">calc_primes.s</a><br>
-	|   |   |-- [&nbsp;440]&nbsp;&nbsp;<a class="NORM" href="./code/raw/clock.c">clock.c</a><br>
-	|   |   |-- [&nbsp;382]&nbsp;&nbsp;<a class="NORM" href="./code/raw/color_test.c">color_test.c</a><br>
-	|   |   |-- [&nbsp;641]&nbsp;&nbsp;<a class="NORM" href="./code/raw/colors.c">colors.c</a><br>
-	|   |   |-- [&nbsp;893]&nbsp;&nbsp;<a class="NORM" href="./code/raw/crc32.c">crc32.c</a><br>
-	|   |   |-- [2.4K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/curses_menu.py">curses_menu.py</a><br>
-	|   |   |-- [&nbsp;&nbsp;18]&nbsp;&nbsp;<a class="NORM" href="./code/raw/data.txt">data.txt</a><br>
-	|   |   |-- [&nbsp;382]&nbsp;&nbsp;<a class="NORM" href="./code/raw/divisors copy.py">divisors copy.py</a><br>
-	|   |   |-- [&nbsp;15K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/eratosthenes.cu">eratosthenes.cu</a><br>
-	|   |   |-- [2.4K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/eratosthenes.h">eratosthenes.h</a><br>
-	|   |   |-- [6.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/eratosthenes_kernel.cu">eratosthenes_kernel.cu</a><br>
-	|   |   |-- [&nbsp;636]&nbsp;&nbsp;<a class="NORM" href="./code/raw/fact.c">fact.c</a><br>
-	|   |   |-- [&nbsp;168]&nbsp;&nbsp;<a class="NORM" href="./code/raw/fact.s">fact.s</a><br>
-	|   |   |-- [&nbsp;359]&nbsp;&nbsp;<a class="NORM" href="./code/raw/factorial.c">factorial.c</a><br>
-	|   |   |-- [&nbsp;168]&nbsp;&nbsp;<a class="NORM" href="./code/raw/factorial.s">factorial.s</a><br>
-	|   |   |-- [3.4K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/factorial_gpu.cu">factorial_gpu.cu</a><br>
-	|   |   |-- [1.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/file_list.c">file_list.c</a><br>
-	|   |   |-- [4.9K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/freq.c">freq.c</a><br>
-	|   |   |-- [4.7K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/frq.c">frq.c</a><br>
-	|   |   |-- [2.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/get_http.c">get_http.c</a><br>
-	|   |   |-- [&nbsp;707]&nbsp;&nbsp;<a class="NORM" href="./code/raw/gethost.c">gethost.c</a><br>
-	|   |   |-- [&nbsp;875]&nbsp;&nbsp;<a class="NORM" href="./code/raw/gethostbyname.c">gethostbyname.c</a><br>
-	|   |   |-- [&nbsp;150]&nbsp;&nbsp;<a class="NORM" href="./code/raw/golden.c">golden.c</a><br>
-	|   |   |-- [&nbsp;758]&nbsp;&nbsp;<a class="NORM" href="./code/raw/grid.c">grid.c</a><br>
-	|   |   |-- [1.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hello copy.s">hello copy.s</a><br>
-	|   |   |-- [2.9K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hello-world-server.c">hello-world-server.c</a><br>
-	|   |   |-- [5.9K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hello-x.c">hello-x.c</a><br>
-	|   |   |-- [&nbsp;&nbsp;81]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hello.c">hello.c</a><br>
-	|   |   |-- [1.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hello.s">hello.s</a><br>
-	|   |   |-- [&nbsp;559]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hello2.s">hello2.s</a><br>
-	|   |   |-- [1.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hello_world.cu">hello_world.cu</a><br>
-	|   |   |-- [1.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/helloworld.s">helloworld.s</a><br>
-	|   |   |-- [4.7K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hexdump.c">hexdump.c</a><br>
-	|   |   |-- [&nbsp;807]&nbsp;&nbsp;<a class="NORM" href="./code/raw/hostname.c">hostname.c</a><br>
-	|   |   |-- [3.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/http_example.c">http_example.c</a><br>
-	|   |   |-- [2.5K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/http_get.c">http_get.c</a><br>
-	|   |   |-- [2.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/huffman.c">huffman.c</a><br>
-	|   |   |-- [&nbsp;619]&nbsp;&nbsp;<a class="NORM" href="./code/raw/input_test.c">input_test.c</a><br>
-	|   |   |-- [1.7K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/isprime.c">isprime.c</a><br>
-	|   |   |-- [&nbsp;582]&nbsp;&nbsp;<a class="NORM" href="./code/raw/keygen.java">keygen.java</a><br>
-	|   |   |-- [3.3K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/md5.c">md5.c</a><br>
-	|   |   |-- [5.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/md5_test.c">md5_test.c</a><br>
-	|   |   |-- [1.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/menu_test.c">menu_test.c</a><br>
-	|   |   |-- [10.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/morsewav.c">morsewav.c</a><br>
-	|   |   |-- [2.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/move_box.c">move_box.c</a><br>
-	|   |   |-- [1.9K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/mul_array_items.cu">mul_array_items.cu</a><br>
-	|   |   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/multiline-text-editor 2.c">multiline-text-editor 2.c</a><br>
-	|   |   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/multiline-text-editor.c">multiline-text-editor.c</a><br>
-	|   |   |-- [1.4K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/multiply.c">multiply.c</a><br>
-	|   |   |-- [2.5K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/nccolour.c">nccolour.c</a><br>
-	|   |   |-- [1004]&nbsp;&nbsp;<a class="NORM" href="./code/raw/ncurses_colors.c">ncurses_colors.c</a><br>
-	|   |   |-- [2.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/ncurses_example.c">ncurses_example.c</a><br>
-	|   |   |-- [&nbsp;462]&nbsp;&nbsp;<a class="NORM" href="./code/raw/number_table.c">number_table.c</a><br>
-	|   |   |-- [&nbsp;358]&nbsp;&nbsp;<a class="NORM" href="./code/raw/out.s">out.s</a><br>
-	|   |   |-- [3.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/perms.cu">perms.cu</a><br>
-	|   |   |-- [2.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/permuations.c">permuations.c</a><br>
-	|   |   |-- [6.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/poission.cu">poission.cu</a><br>
-	|   |   |-- [&nbsp;424]&nbsp;&nbsp;<a class="NORM" href="./code/raw/power.c">power.c</a><br>
-	|   |   |-- [&nbsp;496]&nbsp;&nbsp;<a class="NORM" href="./code/raw/prime_list.c">prime_list.c</a><br>
-	|   |   |-- [3.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/prime_number.cu">prime_number.cu</a><br>
-	|   |   |-- [&nbsp;850]&nbsp;&nbsp;<a class="NORM" href="./code/raw/prime_tool_0.2.c">prime_tool_0.2.c</a><br>
-	|   |   |-- [1.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/primes.c">primes.c</a><br>
-	|   |   |-- [4.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/primes.cu">primes.cu</a><br>
-	|   |   |-- [&nbsp;381]&nbsp;&nbsp;<a class="NORM" href="./code/raw/primes2.c">primes2.c</a><br>
-	|   |   |-- [&nbsp;724]&nbsp;&nbsp;<a class="NORM" href="./code/raw/quad.c">quad.c</a><br>
-	|   |   |-- [&nbsp;360]&nbsp;&nbsp;<a class="NORM" href="./code/raw/random.c">random.c</a><br>
-	|   |   |-- [2.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/readwords.c">readwords.c</a><br>
-	|   |   |-- [5.9K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/remove-comments.c">remove-comments.c</a><br>
-	|   |   |-- [&nbsp;188]&nbsp;&nbsp;<a class="NORM" href="./code/raw/repeat_char.c">repeat_char.c</a><br>
-	|   |   |-- [&nbsp;375]&nbsp;&nbsp;<a class="NORM" href="./code/raw/rsa-test.c">rsa-test.c</a><br>
-	|   |   |-- [9.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/rsa.c">rsa.c</a><br>
-	|   |   |-- [4.3K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/rsakg.c">rsakg.c</a><br>
-	|   |   |-- [&nbsp;613]&nbsp;&nbsp;<a class="NORM" href="./code/raw/scanf.s">scanf.s</a><br>
-	|   |   |-- [5.3K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/search.c">search.c</a><br>
-	|   |   |-- [1.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/self3_c.c">self3_c.c</a><br>
-	|   |   |-- [1.9K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/serial.c">serial.c</a><br>
-	|   |   |-- [&nbsp;638]&nbsp;&nbsp;<a class="NORM" href="./code/raw/serial.py">serial.py</a><br>
-	|   |   |-- [7.4K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/sha1.c">sha1.c</a><br>
-	|   |   |-- [7.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/sha256.S">sha256.S</a><br>
-	|   |   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/sha256.cu">sha256.cu</a><br>
-	|   |   |-- [2.9K]&nbsp;&nbsp;<a class="EXEC" href="./code/raw/sha256.py">sha256.py</a><br>
-	|   |   |-- [&nbsp;953]&nbsp;&nbsp;<a class="NORM" href="./code/raw/sieve.c">sieve.c</a><br>
-	|   |   |-- [&nbsp;737]&nbsp;&nbsp;<a class="NORM" href="./code/raw/size.c">size.c</a><br>
-	|   |   |-- [1.4K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/split_string.c">split_string.c</a><br>
-	|   |   |-- [&nbsp;403]&nbsp;&nbsp;<a class="NORM" href="./code/raw/string_split.c">string_split.c</a><br>
-	|   |   |-- [4.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/strsep.c">strsep.c</a><br>
-	|   |   |-- [&nbsp;337]&nbsp;&nbsp;<a class="NORM" href="./code/raw/strtol-ex 2.c">strtol-ex 2.c</a><br>
-	|   |   |-- [&nbsp;337]&nbsp;&nbsp;<a class="NORM" href="./code/raw/strtol-ex.c">strtol-ex.c</a><br>
-	|   |   |-- [1023]&nbsp;&nbsp;<a class="NORM" href="./code/raw/struct.c">struct.c</a><br>
-	|   |   |-- [3.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/studentlist.c">studentlist.c</a><br>
-	|   |   |-- [&nbsp;324]&nbsp;&nbsp;<a class="NORM" href="./code/raw/sum.c">sum.c</a><br>
-	|   |   |-- [1.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/sun.s">sun.s</a><br>
-	|   |   |-- [&nbsp;176]&nbsp;&nbsp;<a class="NORM" href="./code/raw/system_command.c">system_command.c</a><br>
-	|   |   |-- [&nbsp;207]&nbsp;&nbsp;<a class="NORM" href="./code/raw/table.c">table.c</a><br>
-	|   |   |-- [&nbsp;554]&nbsp;&nbsp;<a class="NORM" href="./code/raw/test.c">test.c</a><br>
-	|   |   |-- [&nbsp;150]&nbsp;&nbsp;<a class="NORM" href="./code/raw/test.py">test.py</a><br>
-	|   |   |-- [1.3K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/test.s">test.s</a><br>
-	|   |   |-- [&nbsp;576]&nbsp;&nbsp;<a class="NORM" href="./code/raw/test.sh">test.sh</a><br>
-	|   |   |-- [1.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/threaded_primes.c">threaded_primes.c</a><br>
-	|   |   |-- [&nbsp;727]&nbsp;&nbsp;<a class="NORM" href="./code/raw/threaded_primes2.c">threaded_primes2.c</a><br>
-	|   |   |-- [&nbsp;815]&nbsp;&nbsp;<a class="NORM" href="./code/raw/tree.c">tree.c</a><br>
-	|   |   |-- [2.2K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/tree1.c">tree1.c</a><br>
-	|   |   |-- [&nbsp;465]&nbsp;&nbsp;<a class="NORM" href="./code/raw/tutorial10.c">tutorial10.c</a><br>
-	|   |   |-- [&nbsp;219]&nbsp;&nbsp;<a class="NORM" href="./code/raw/tutorial9.c">tutorial9.c</a><br>
-	|   |   |-- [&nbsp;302]&nbsp;&nbsp;<a class="NORM" href="./code/raw/usb_test.py">usb_test.py</a><br>
-	|   |   |-- [&nbsp;544]&nbsp;&nbsp;<a class="NORM" href="./code/raw/w_ppm.c">w_ppm.c</a><br>
-	|   |   |-- [&nbsp;422]&nbsp;&nbsp;<a class="NORM" href="./code/raw/walk.py">walk.py</a><br>
-	|   |   |-- [7.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/wav.c">wav.c</a><br>
-	|   |   |-- [5.7K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/webserver.c">webserver.c</a><br>
-	|   |   |-- [&nbsp;758]&nbsp;&nbsp;<a class="NORM" href="./code/raw/window 2.c">window 2.c</a><br>
-	|   |   |-- [&nbsp;836]&nbsp;&nbsp;<a class="NORM" href="./code/raw/window.c">window.c</a><br>
-	|   |   |-- [&nbsp;195]&nbsp;&nbsp;<a class="NORM" href="./code/raw/window.py">window.py</a><br>
-	|   |   |-- [4.7K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/word_frq.c">word_frq.c</a><br>
-	|   |   |-- [5.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/wordcount.c">wordcount.c</a><br>
-	|   |   |-- [2.7K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/words 2.c">words 2.c</a><br>
-	|   |   |-- [2.7K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/words.c">words.c</a><br>
-	|   |   |-- [&nbsp;867]&nbsp;&nbsp;<a class="NORM" href="./code/raw/write.c">write.c</a><br>
-	|   |   |-- [&nbsp;161]&nbsp;&nbsp;<a class="NORM" href="./code/raw/x-hashed.py">x-hashed.py</a><br>
-	|   |   |-- [5.6K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/x86-64.s">x86-64.s</a><br>
-	|   |   |-- [1.9K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/x86_both.s">x86_both.s</a><br>
-	|   |   |-- [2.0K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/xgcd.c">xgcd.c</a><br>
-	|   |   `-- [1.1K]&nbsp;&nbsp;<a class="NORM" href="./code/raw/xml-test.py">xml-test.py</a><br>
-	|   |-- [&nbsp;18K]&nbsp;&nbsp;<a class="NORM" href="./code/readwords.c.html">readwords.c.html</a><br>
-	|   |-- [&nbsp;28K]&nbsp;&nbsp;<a class="NORM" href="./code/remove-comments.c.html">remove-comments.c.html</a><br>
-	|   |-- [8.3K]&nbsp;&nbsp;<a class="NORM" href="./code/repeat_char.c.html">repeat_char.c.html</a><br>
-	|   |-- [9.6K]&nbsp;&nbsp;<a class="NORM" href="./code/rsa-test.c.html">rsa-test.c.html</a><br>
-	|   |-- [&nbsp;49K]&nbsp;&nbsp;<a class="NORM" href="./code/rsa.c.html">rsa.c.html</a><br>
-	|   |-- [&nbsp;34K]&nbsp;&nbsp;<a class="NORM" href="./code/rsakg.c.html">rsakg.c.html</a><br>
-	|   |-- [10.0K]&nbsp;&nbsp;<a class="NORM" href="./code/scanf.s.html">scanf.s.html</a><br>
-	|   |-- [&nbsp;49K]&nbsp;&nbsp;<a class="NORM" href="./code/search.c.html">search.c.html</a><br>
-	|   |-- [&nbsp;17K]&nbsp;&nbsp;<a class="NORM" href="./code/self3_c.c.html">self3_c.c.html</a><br>
-	|   |-- [&nbsp;17K]&nbsp;&nbsp;<a class="NORM" href="./code/serial.c.html">serial.c.html</a><br>
-	|   |-- [8.9K]&nbsp;&nbsp;<a class="NORM" href="./code/serial.py.html">serial.py.html</a><br>
-	|   |-- [&nbsp;61K]&nbsp;&nbsp;<a class="NORM" href="./code/sha1.c.html">sha1.c.html</a><br>
-	|   |-- [&nbsp;42K]&nbsp;&nbsp;<a class="NORM" href="./code/sha256.cu.html">sha256.cu.html</a><br>
-	|   |-- [&nbsp;26K]&nbsp;&nbsp;<a class="NORM" href="./code/sha256.py.html">sha256.py.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/sieve.c.html">sieve.c.html</a><br>
-	|   |-- [&nbsp;10K]&nbsp;&nbsp;<a class="NORM" href="./code/size.c.html">size.c.html</a><br>
-	|   |-- [&nbsp;14K]&nbsp;&nbsp;<a class="NORM" href="./code/split_string.c.html">split_string.c.html</a><br>
-	|   |-- [9.5K]&nbsp;&nbsp;<a class="NORM" href="./code/string_split.c.html">string_split.c.html</a><br>
-	|   |-- [&nbsp;17K]&nbsp;&nbsp;<a class="NORM" href="./code/strsep.c.html">strsep.c.html</a><br>
-	|   |-- [8.4K]&nbsp;&nbsp;<a class="NORM" href="./code/strtol-ex 2.c.html">strtol-ex 2.c.html</a><br>
-	|   |-- [8.4K]&nbsp;&nbsp;<a class="NORM" href="./code/strtol-ex.c.html">strtol-ex.c.html</a><br>
-	|   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/struct.c.html">struct.c.html</a><br>
-	|   |-- [&nbsp;23K]&nbsp;&nbsp;<a class="NORM" href="./code/studentlist.c.html">studentlist.c.html</a><br>
-	|   |-- [8.6K]&nbsp;&nbsp;<a class="NORM" href="./code/sum.c.html">sum.c.html</a><br>
-	|   |-- [&nbsp;17K]&nbsp;&nbsp;<a class="NORM" href="./code/sun.s.html">sun.s.html</a><br>
-	|   |-- [7.6K]&nbsp;&nbsp;<a class="NORM" href="./code/system_command.c.html">system_command.c.html</a><br>
-	|   |-- [7.8K]&nbsp;&nbsp;<a class="NORM" href="./code/table.c.html">table.c.html</a><br>
-	|   |-- [8.4K]&nbsp;&nbsp;<a class="NORM" href="./code/test.c.html">test.c.html</a><br>
-	|   |-- [8.0K]&nbsp;&nbsp;<a class="NORM" href="./code/test.py.html">test.py.html</a><br>
-	|   |-- [&nbsp;15K]&nbsp;&nbsp;<a class="NORM" href="./code/test.s.html">test.s.html</a><br>
-	|   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/threaded_primes.c.html">threaded_primes.c.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/threaded_primes2.c.html">threaded_primes2.c.html</a><br>
-	|   |-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/tree.c.html">tree.c.html</a><br>
-	|   |-- [&nbsp;14K]&nbsp;&nbsp;<a class="NORM" href="./code/tree1.c.html">tree1.c.html</a><br>
-	|   |-- [9.4K]&nbsp;&nbsp;<a class="NORM" href="./code/tutorial10.c.html">tutorial10.c.html</a><br>
-	|   |-- [8.0K]&nbsp;&nbsp;<a class="NORM" href="./code/tutorial9.c.html">tutorial9.c.html</a><br>
-	|   |-- [8.3K]&nbsp;&nbsp;<a class="NORM" href="./code/usb_test.py.html">usb_test.py.html</a><br>
-	|   |-- [&nbsp;11K]&nbsp;&nbsp;<a class="NORM" href="./code/w_ppm.c.html">w_ppm.c.html</a><br>
-	|   |-- [8.9K]&nbsp;&nbsp;<a class="NORM" href="./code/walk.py.html">walk.py.html</a><br>
-	|   |-- [&nbsp;30K]&nbsp;&nbsp;<a class="NORM" href="./code/wav.c.html">wav.c.html</a><br>
-	|   |-- [&nbsp;43K]&nbsp;&nbsp;<a class="NORM" href="./code/webserver.c.html">webserver.c.html</a><br>
-	|   |-- [9.9K]&nbsp;&nbsp;<a class="NORM" href="./code/window 2.c.html">window 2.c.html</a><br>
-	|   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/window.c.html">window.c.html</a><br>
-	|   |-- [7.8K]&nbsp;&nbsp;<a class="NORM" href="./code/window.py.html">window.py.html</a><br>
-	|   |-- [&nbsp;26K]&nbsp;&nbsp;<a class="NORM" href="./code/word_frq.c.html">word_frq.c.html</a><br>
-	|   |-- [&nbsp;20K]&nbsp;&nbsp;<a class="NORM" href="./code/wordcount.c.html">wordcount.c.html</a><br>
-	|   |-- [&nbsp;26K]&nbsp;&nbsp;<a class="NORM" href="./code/words 2.c.html">words 2.c.html</a><br>
-	|   |-- [&nbsp;26K]&nbsp;&nbsp;<a class="NORM" href="./code/words.c.html">words.c.html</a><br>
-	|   |-- [&nbsp;12K]&nbsp;&nbsp;<a class="NORM" href="./code/write.c.html">write.c.html</a><br>
-	|   |-- [7.9K]&nbsp;&nbsp;<a class="NORM" href="./code/x-hashed.py.html">x-hashed.py.html</a><br>
-	|   |-- [&nbsp;51K]&nbsp;&nbsp;<a class="NORM" href="./code/x86-64.s.html">x86-64.s.html</a><br>
-	|   |-- [&nbsp;18K]&nbsp;&nbsp;<a class="NORM" href="./code/x86_both.s.html">x86_both.s.html</a><br>
-	|   |-- [&nbsp;14K]&nbsp;&nbsp;<a class="NORM" href="./code/xgcd.c.html">xgcd.c.html</a><br>
-	|   `-- [&nbsp;13K]&nbsp;&nbsp;<a class="NORM" href="./code/xml-test.py.html">xml-test.py.html</a><br>
-	|-- [&nbsp;&nbsp;68]&nbsp;&nbsp;<a class="DIR" href="./contact/">contact</a><br>
-	|-- [&nbsp;170]&nbsp;&nbsp;<a class="DIR" href="./css/">css</a><br>
-	|   |-- [&nbsp;&nbsp;30]&nbsp;&nbsp;<a class="NORM" href="./css/code_links.css">code_links.css</a><br>
-	|   `-- [&nbsp;&nbsp;33]&nbsp;&nbsp;<a class="NORM" href="./css/index.css">index.css</a><br>
-	|-- [&nbsp;&nbsp;68]&nbsp;&nbsp;<a class="DIR" href="./images/">images</a><br>
-	|-- [&nbsp;&nbsp;&nbsp;0]&nbsp;&nbsp;<a class="NORM" href="./index.html">index.html</a><br>
-	|-- [&nbsp;136]&nbsp;&nbsp;<a class="DIR" href="./js/">js</a><br>
-	|   `-- [&nbsp;91K]&nbsp;&nbsp;<a class="EXEC" href="./js/jquery.min.js">jquery.min.js</a><br>
-	|-- [2.0K]&nbsp;&nbsp;<a class="NORM" href="./params.json">params.json</a><br>
-	|-- [&nbsp;494]&nbsp;&nbsp;<a class="NORM" href="./settings.json">settings.json</a><br>
-	|-- [&nbsp;35K]&nbsp;&nbsp;<a class="NORM" href="./sitemap.html">sitemap.html</a><br>
-	|-- [&nbsp;170]&nbsp;&nbsp;<a class="DIR" href="./templates/">templates</a><br>
-	|   |-- [3.0K]&nbsp;&nbsp;<a class="NORM" href="./templates/code_template.html">code_template.html</a><br>
-	|   `-- [1.4K]&nbsp;&nbsp;<a class="NORM" href="./templates/template.html">template.html</a><br>
-	|-- [2.0K]&nbsp;&nbsp;<a class="NORM" href="./update.py">update.py</a><br>
-	`-- [&nbsp;&nbsp;68]&nbsp;&nbsp;<a class="DIR" href="./work/">work</a><br>
-	<br><br>
-	</p>
-	<p>
+<nav class="navbar navbar-default" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="http://kylelk.github.io/kylekersey">Kyle Kersey</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li><a href="http://kylelk.github.io/kylekersey/code/index.html">Code</a></li>
+         <li><a href="about/">About</a></li>
+          <li><a href="contact/">Contact</a></li>
+          <li><a href="work/">Work</a></li>
+          <li><a href="http://kylelk.github.io/kylekersey/sitemap.html">Site Map</a></li>
+      </ul>
+   </div>
+</nav>
+<div class="main-area">
+    <b><a id="raw_link" href="{{raw_link}}">View Raw</a></b>
+    <br>    
+    {{ html_code }}
+   <div class="page-links">
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{page_url}}">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>   
+   </div>
+    <pre>
+The MIT License (MIT)
 
-19 directories, 308 files
-	<br><br>
-	</p>
-	<hr>
-	<p class="VERSION">
-		 tree v1.6.0 (c) 1996 - 2011 by Steve Baker and Thomas Moore <br>
-		 HTML output hacked and copyleft (c) 1998 by Francesc Rocher <br>
-		 Charsets / OS/2 support (c) 2001 by Kyosuke Tokoro
-	</p>
+Copyright (c) 2014 kyle kersey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+    </pre>
+</div>
 </body>
 </html>
