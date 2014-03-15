@@ -1,5 +1,5 @@
 rm code/* 
-time python update.py 
+python update.py 
 cd code 
 tree -L 1 -HCh . -T "site map" -o index.html 
 cd .. 
