@@ -42,6 +42,7 @@ for cdate, path in sorted(entries):
         template_data["code_style"] = formatter.get_style_defs(".source")
         template_data["html_code"] = highlight(code, lexer, formatter)
         template_data["page_url"] = settings["website_url"] + settings["highlighted_code_dir"] + os.path.basename(path)+".html"
+        template_data["twitter_card_title"] = os.path.basename(path) 
 
         env = Environment(loader=FileSystemLoader(settings["templates_dir"]))
         template = env.get_template('code_template.html')
